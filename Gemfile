@@ -6,6 +6,8 @@ gem 'haml'
 gem 'haml-rails', :group => :development
 gem 'devise'
 gem 'cancan'
+#gem "twitter-bootstrap-rails", "~> 2.0.1.0"
+gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 group :production do
   gem 'pg'
