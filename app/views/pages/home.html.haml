@@ -1,3 +1,8 @@
 %h2 Home Page
 
-= link_to "test", '#'
+.letter_menu
+  = link_to "random", '#'
+  &nbsp; &nbsp;
+  %span.letters
+    - [*'a'..'z'].each do |letter|
+      = link_to letter, '#'
