@@ -28,12 +28,19 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "#"}Urban Chinese Dictionary
+          %a.brand{:href => root_path}Chinese Slang
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              %li= link_to "Word of the Day", "/path1"
+              %li= link_to "Add", "/path2"
+              %li= link_to "Edit", "/path3"
+              %li.divider-vertical
+            = form_tag root_path, { :class => "navbar-search pull-left" } do
+              = text_field_tag "blah", nil, { :class => "search-query", :placeholder => "Search" }
+            %ul.nav.pull-right
+              %li= link_to "中文", '#'
+              %li= link_to "English", '#'
+
 
     .container
 
