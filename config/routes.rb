@@ -5,6 +5,8 @@ UrbanChineseDictionary::Application.routes.draw do
 
   root :to => 'pages#home'
 
+  get 'define/:word' => 'words#show'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
