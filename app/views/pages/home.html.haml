@@ -1,8 +1,1 @@
-.letter_menu
-  = link_to "random", '#'
-  &nbsp; &nbsp;
-  %span.letters
-    - [*'a'..'z'].each do |letter|
-      = link_to letter, '#'
-  = link_to "#", '#'
-%hr
+= render :partial => 'shared/letter_menu'
