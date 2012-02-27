@@ -36,6 +36,9 @@
             = form_tag root_path, { :class => "navbar-search pull-left" } do
               = text_field_tag "blah", nil, { :class => "search-query", :placeholder => "Search" }
             %ul.nav.pull-right
+              %li= link_to "Sign In", new_user_session_path
+              %li= link_to "Join", new_user_registration_path
+              %li.divider-vertical
               %li= link_to "中文", '#'
               %li= link_to "English", '#'
 
