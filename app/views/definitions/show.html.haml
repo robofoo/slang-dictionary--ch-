@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Word:
+  = @definition.word
+%p
+  %b Definition:
+  = @definition.definition
+%p
+  %b Example:
+  = @definition.example
+
+= link_to 'Edit', edit_definition_path(@definition)
+\|
+= link_to 'Back', definitions_path

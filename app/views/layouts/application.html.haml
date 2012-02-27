@@ -31,7 +31,7 @@
           %a.brand{:href => root_path}Chinese Slang
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Add", "/path2"
+              %li= link_to "Add", new_definition_path
               %li= link_to "Edit", "/path3"
             = form_tag root_path, { :class => "navbar-search pull-left" } do
               = text_field_tag "blah", nil, { :class => "search-query", :placeholder => "Search" }

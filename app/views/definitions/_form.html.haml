@@ -1,0 +1,10 @@
+= simple_form_for(@definition) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :word
+    = f.input :definition
+    = f.input :example
+
+  .form-actions
+    = f.button :submit

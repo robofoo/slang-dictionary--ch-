@@ -1,4 +1,6 @@
 UrbanChineseDictionary::Application.routes.draw do
+  resources :definitions
+
   devise_for :users
 
   root :to => 'pages#home'

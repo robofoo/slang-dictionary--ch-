@@ -1,0 +1,23 @@
+%h1 Listing definitions
+
+%table
+  %tr
+    %th Word
+    %th Definition
+    %th Example
+    %th
+    %th
+    %th
+
+  - @definitions.each do |definition|
+    %tr
+      %td= definition.word
+      %td= definition.definition
+      %td= definition.example
+      %td= link_to 'Show', definition
+      %td= link_to 'Edit', edit_definition_path(definition)
+      %td= link_to 'Destroy', definition, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Definition', new_definition_path
