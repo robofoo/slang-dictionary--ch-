@@ -2,7 +2,7 @@
 %html{:lang => "en"}
   %head
     %meta{:charset => "utf-8"}/
-    %title= content_for?(:title) ? yield(:title) : "Urban Dictionary - Chinese"
+    %title= content_for?(:title) ? yield(:title) : "ChengShi CiDian"
     = csrf_meta_tags
     / Le HTML5 shim, for IE6-8 support of HTML elements
     /[if lt IE 9]
@@ -28,13 +28,13 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => root_path}Chinese Slang
+          %a.brand{:href => root_path}ChengShi CiDian
           .container.nav-collapse
             %ul.nav
               %li= link_to "Add", new_definition_path
               %li= link_to "Edit", "/path3"
             = form_tag root_path, { :class => "navbar-search pull-left" } do
-              = text_field_tag "blah", nil, { :class => "search-query", :placeholder => "Search" }
+              = text_field_tag "word", nil, { :class => "search-query", :placeholder => "Search" }
             %ul.nav.pull-right
               -if user_signed_in?
                 %li= link_to "Log off", destroy_user_session_path, :method => :delete
@@ -54,11 +54,15 @@
             %a.close(data-dismiss="alert") x
             = message
         .row
-          .span12
+          .span12.yielded-area
             = yield
     
       %footer
-        %p &copy; Company 2012
+        %br
+        %p.pull-right
+          &copy; ChengShiCiDian 2012
+          = link_to "About", '#'
+          = link_to "Contact", '#'
     /
       Le javascript
       \==================================================
