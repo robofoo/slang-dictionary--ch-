@@ -1,13 +1,11 @@
 = render :partial => 'shared/letter_menu'
 
 %h3
-  -if @char == '#'
-    numbers and symbols
+  -if @definition
+    =@definition.word
   -else
-    =@char
+    "#{params[:word]}"
+    not defined
+    = link_to "yet", new_definition_path(:word => params[:word])
 
-%hr
--@definitions.each do |definition|
-  = definition.word
-  %hr
 =params

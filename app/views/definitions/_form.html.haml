@@ -1,15 +1,24 @@
 .row
-  .span6
+  .span5
     %h2 Definition
+    .well
+      All our definitions were written by people just like you. Now add your own!
     = simple_form_for(@definition) do |f|
       = f.error_notification
 
+      - @new_word = params[:word]
       .form-inputs
-        = f.input :word
-        = f.input :definition
+        -if @new_word
+          = f.input :word, :label => 'Word (in Chinese)', :input_html => { :value => @new_word }
+        -else
+          = f.input :word, :label => 'Word (in Chinese)'
+        = f.input :pinyin
+        = f.input :definition, :hint => "Give some context as it helps make the word easier to understand. Don't name your friend but celebrities are welcome."
         = f.input :example
+        = f.input :email, :hint => "We will keep your email secret. But it's required to submit new words."
 
       .form-actions
         = f.button :submit
+  .span1 &nbsp;
   .span6
-    %h2 Preview
+    %h2 Sample

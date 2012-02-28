@@ -1,0 +1,14 @@
+= render :partial => 'shared/letter_menu'
+
+%h3
+  -if @char and @char == '#'
+    numbers and symbols
+  -else
+    =@char
+
+%hr
+-unless @definition_list.empty?
+  -@definition_list.each do |definition|
+    = definition.word
+    %hr
+=params

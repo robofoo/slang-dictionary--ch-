@@ -1,6 +1,14 @@
 class DefineController < ApplicationController
-  def show
+  def index
     @char = params[:char]
-    @definitions = Definition.where(:word => @char..@char.next)
+    @definition_list = Definition.where(:word => @char..@char.next)
+  end
+
+  def show
+    @definition = Definition.where(:word => params[:word]).first
+  end
+
+  def search
+    @definition_list = Definition.find(:all, :conditions => ["word like ?", "#{params[:word]}%"])
   end
 end
