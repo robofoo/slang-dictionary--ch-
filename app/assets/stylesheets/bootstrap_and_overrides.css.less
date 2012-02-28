@@ -17,6 +17,7 @@
 
 @gridColumnWidth: 50px;
 @gridGutterWidth: 15px;
+@font-size: 13px;
 
 a {
   color: @linkColor;
@@ -47,6 +48,23 @@ a {
 
 .search-query {
   width: 150px;
+}
+
+ol.definitions {
+  font-size: 1.5em;
+  font-weight: bold;
+
+  p.header {
+    line-height: 1.4em;
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  p {
+    line-height: 1.4em;
+    font-size: @font-size;
+    font-weight: normal;
+  }
 }
 
 textarea {

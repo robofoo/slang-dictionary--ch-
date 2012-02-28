@@ -1,11 +1,20 @@
 = render :partial => 'shared/letter_menu'
 
-%h3
-  -if @definition
-    =@definition.word
-  -else
-    "#{params[:word]}"
-    not defined
-    = link_to "yet", new_definition_path(:word => params[:word])
-
-=params
+-if @definition_list
+  %ol.definitions
+    -@definition_list.each do |d|
+      %li
+        %p.header
+          =d.word
+          %br
+          =d.pinyin
+        %p
+          =d.definition
+          %br
+          %i
+            =d.example
+          %hr
+-else
+  "#{params[:word]}"
+  not defined
+  = link_to "yet", new_definition_path(:word => params[:word])

@@ -5,7 +5,7 @@ class DefineController < ApplicationController
   end
 
   def show
-    @definition = Definition.where(:word => params[:word]).first
+    @definition_list = Definition.where(:word => params[:word])
   end
 
   def search
