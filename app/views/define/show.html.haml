@@ -1,20 +1,16 @@
 = render :partial => 'shared/letter_menu'
 
--if @definition_list
+
+-unless @definition_list.empty?
   %ol.definitions
     -@definition_list.each do |d|
       %li
-        %p.header
-          =d.word
-          %br
-          =d.pinyin
-        %p
-          =d.definition
-          %br
-          %i
-            =d.example
-          %hr
+        = render :partial => 'shared/definition', :locals => { :definition => d }
+      %hr
 -else
-  "#{params[:word]}"
+  %ol.definitions
+    %li
+      %p
+        .chinese= params[:word]
   not defined
   = link_to "yet", new_definition_path(:word => params[:word])
