@@ -1,7 +1,6 @@
 = render :partial => 'shared/letter_menu'
 
-
--unless @definition_list.empty?
+-if !@definition_list.nil? && !@definition_list.empty?
   %ol.definitions
     -@definition_list.each do |d|
       %li
@@ -14,3 +13,8 @@
         .chinese= params[:word]
   not defined
   = link_to "yet", new_definition_path(:word => params[:word])
+
+%br
+sql:
+%br
+= @sql
