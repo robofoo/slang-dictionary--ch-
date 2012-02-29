@@ -1,1 +1,6 @@
 = render :partial => 'shared/letter_menu'
+
+%ol.definitions
+  %li
+    = render :partial => 'shared/definition', :locals => { :definition => @random_definition }
+  %hr
