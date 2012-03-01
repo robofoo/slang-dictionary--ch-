@@ -1,0 +1,12 @@
+%strong
+  .row.definitions_header
+    .span3
+      word
+    .span4
+      definition
+    .span4
+      example
+    .span1
+      score
+
+= render :partial => 'shared/definition', :collection => @definitions
