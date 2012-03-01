@@ -5,11 +5,7 @@ class DefineController < ApplicationController
   end
 
   def show
-    if request.method == 'GET'
-      @definitions = Definition.where(:word => params[:word])
     # from search
-    elsif request.method == 'POST'
-      @definitions = Definition.find(:all, :conditions => ["word like ?", "%#{params[:word]}%"])
-    end
+    @definitions = Definition.where(:word => params[:word])
   end
 end

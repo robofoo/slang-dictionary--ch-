@@ -5,7 +5,6 @@ UrbanChineseDictionary::Application.routes.draw do
 
   root :to => 'pages#home'
 
-  get 'define/:word' => 'define#show', :as => "define_show"
   post 'define' => 'define#show', :as => "define_show"
   get 'define' => 'define#index'
 
