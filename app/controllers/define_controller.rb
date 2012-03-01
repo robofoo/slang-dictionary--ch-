@@ -1,11 +1,12 @@
 class DefineController < ApplicationController
-  def index
-    @char = params[:char]
-    @definitions = Definition.where(:word => @char..@char.next)
-  end
-
   def show
+    # from letter menu
+    @char = params[:char]
+    if @char
+      @definitions = Definition.where(:word => @char..@char.next)
     # from search
-    @definitions = Definition.where(:word => params[:word])
+    else
+      @definitions = Definition.where(:word => params[:word])
+    end
   end
 end

@@ -5,7 +5,8 @@ UrbanChineseDictionary::Application.routes.draw do
 
   root :to => 'pages#home'
 
-  post 'define' => 'define#show', :as => "define_show"
+  match 'define' => 'define#show', :as => "define_show", :via => [:get, :post]
+
   get 'define' => 'define#index'
 
   # The priority is based upon order of creation:

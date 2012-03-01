@@ -7,8 +7,8 @@
     =@char
 
 %hr
--unless @definition_list.empty?
-  -@definition_list.each do |definition|
+-unless @definitions.empty?
+  -@definitions.each do |definition|
     = definition.word
     %hr
 =params
