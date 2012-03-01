@@ -19,6 +19,9 @@
 @gridGutterWidth: 20px;
 @font-size: 13px;
 
+// global: letter menu styles
+@link-background-color: #aaa;
+
 a {
   color: @linkColor;
   &:visited {
@@ -27,7 +30,7 @@ a {
   &:hover {
     text-decoration: none;
     color: #fff;
-    background-color: #000; 
+    background-color: @link-background-color;
   } 
 }
 
@@ -39,10 +42,27 @@ a {
   text-align: center;
 
   .letters {
-    letter-spacing: .5em;
+    padding: 3px 5px;
   }
   .random {
     letter-spacing: normal;
+  }
+
+  a:link, a:visited {
+    padding: 3px 6px;
+  }
+  a:hover, a:active {
+    padding: 3px 6px;
+    background-color: @link-background-color;
+  }
+
+  a.active:link, a.active:visited {
+    padding: 3px 6px;
+    background-color: @link-background-color;
+  }
+  a.active:hover, a.active:active {
+    padding: 3px 6px;
+    background-color: @link-background-color;
   }
 }
 
@@ -69,6 +89,7 @@ a {
   }
 }
 
+// form styles
 textarea {
   height: 100px;
 }

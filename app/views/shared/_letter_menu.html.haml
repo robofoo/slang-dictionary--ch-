@@ -1,10 +1,10 @@
 .letter_menu
   %span.letters.random
-    = link_to "random", root_url
+    = link_to "random", root_path
   &nbsp; &nbsp;
   %span.letters
     - [*'a'..'z'].each do |letter|
-      = link_to letter, define_path({ :char => letter })
+      = link_to letter, define_path({ :char => letter }), :class => letter == @char ? "active" : ''
   %span.letters
     = link_to '#', define_path( { :char => '#' })
 %hr
