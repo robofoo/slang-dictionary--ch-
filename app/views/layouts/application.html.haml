@@ -10,7 +10,6 @@
     / Le styles
     :css
       body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     = stylesheet_link_tag "application", :media => "all"
     / Le fav and touch icons
@@ -21,7 +20,9 @@
 
 
   %body
-    .navbar.navbar-fixed-top
+    .home_alert.alert
+      = raw t(:'pages.home.desc')
+    .navbar
       .navbar-inner
         .container
           %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
@@ -29,7 +30,7 @@
             %span.icon-bar
             %span.icon-bar
           %a.brand{:href => root_path}= t :'global.site-name'
-          .container.nav-collapse
+          .container
             %ul.nav
               %li{ :class => params[:action] == 'new' && params[:controller] == 'definitions' ? 'active' : '' }
                 = link_to t(:'application-layout.add'), new_definition_path
@@ -57,6 +58,7 @@
             = message
         .row
           .span12.yielded-area
+            = render :partial => 'shared/letter_menu'
             = yield
     
       %footer.pull-right
