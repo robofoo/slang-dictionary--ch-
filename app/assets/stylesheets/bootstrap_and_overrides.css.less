@@ -15,12 +15,14 @@
 // Example:
 // @linkColor: #ff0000;
 
+@linkColor: #c00;
+
 @gridColumnWidth: 50px;
 @gridGutterWidth: 20px;
 @font-size: 13px;
 
 // global: letter menu styles
-@link-background-color: #aaa;
+@link-background-color: #ddd;
 
 a {
   color: @linkColor;
@@ -29,7 +31,7 @@ a {
   }
   &:hover {
     text-decoration: none;
-    color: #fff;
+    color: darken(@linkColor, 18%);
   } 
 }
 
@@ -47,19 +49,26 @@ a {
     letter-spacing: normal;
   }
 
+  // inactive
   a:link, a:visited {
+    .border-radius(4px);
     padding: 3px 6px;
   }
   a:hover, a:active {
+    .border-radius(4px);
     padding: 3px 6px;
     background-color: @link-background-color;
+    color: @linkColor;
   }
 
+  // active
   a.active:link, a.active:visited {
+    .border-radius(4px);
     padding: 3px 6px;
     background-color: @link-background-color;
   }
   a.active:hover, a.active:active {
+    .border-radius(4px);
     padding: 3px 6px;
     background-color: @link-background-color;
   }
