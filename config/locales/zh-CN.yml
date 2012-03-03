@@ -1,0 +1,14 @@
+zh-CN:
+  global:
+    site-name: 城市词典
+  application-layout:
+    add: 加词
+    edit: 编辑
+    search: 搜索
+    sign-in: 登录 
+    join: 报名
+    logoff: 注销
+    about: 关于我们
+    contact: 联系我们
+  letter-menu:
+    random: 随机
