@@ -1,12 +1,12 @@
 %strong
   .row.definitions_header
     .span3
-      word
+      = t :'partial.definitions.word'
     .span4
-      definition
+      = t :'partial.definitions.definition'
     .span4
-      example
+      = t :'partial.definitions.example'
     .span1
-      score
+      = t :'partial.definitions.score'
 
 = render :partial => 'shared/definition', :collection => @definitions

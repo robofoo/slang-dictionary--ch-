@@ -1,6 +1,7 @@
 zh-CN:
   global:
     site-name: 城市词典
+
   application-layout:
     add: 加词
     edit: 编辑
@@ -10,8 +11,18 @@ zh-CN:
     logoff: 注销
     about: 关于我们
     contact: 联系我们
+
   letter-menu:
     random: 随机词
+
+  # partials
+  partial:
+    definitions:
+      word: 词
+      definition: 定义
+      example: 例子
+      score: 得分
+    
   pages:
     home:
       desc:
