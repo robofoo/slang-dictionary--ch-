@@ -7,7 +7,9 @@ class DefineController < ApplicationController
       @definitions = Definition.where(:word => @char..@char.next)
     # from search
     else
-      @definitions = Definition.where(:word => params[:word])
+      chinese = Definition.where(:word => params[:word])
+      pinyin = Definition.where(:pinyin => params[:word])
+      @definitions = chinese + pinyin
     end
   end
 end
