@@ -4,7 +4,13 @@ class ApplicationController < ActionController::Base
 
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
-    { :locale => I18n.locale }
+
+    # only set locale if language is other than Chinese
+    if I18n.locale == 'zh-CN'.to_sym
+      { }
+    else
+      { :locale => I18n.locale }
+    end
   end
 
   private
