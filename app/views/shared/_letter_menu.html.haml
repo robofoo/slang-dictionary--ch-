@@ -1,6 +1,6 @@
 .letter_menu
   %span.letters.random
-    = link_to "random", root_path, :class => params[:action] == 'home' && params[:controller] == 'pages' ? "active" : ''
+    = link_to t(:'letter-menu.random'), root_path, :class => params[:action] == 'home' && params[:controller] == 'pages' ? "active" : ''
   &nbsp; &nbsp;
   %span.letters
     - [*'a'..'z'].each do |letter|

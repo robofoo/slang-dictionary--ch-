@@ -6,9 +6,14 @@ zh-CN:
     edit: 编辑
     search: 搜索
     sign-in: 登录 
-    join: 报名
+    join: 免费注册
     logoff: 注销
     about: 关于我们
     contact: 联系我们
   letter-menu:
-    random: 随机
+    random: 随机词
+  pages:
+    home:
+      desc:
+        城市词典是<span class="strong">你写的</span>词典。
+        <i>定义你的世界</i>
