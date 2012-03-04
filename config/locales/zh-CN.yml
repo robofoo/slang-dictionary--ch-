@@ -18,7 +18,7 @@ zh-CN:
   # partials
   partial:
     definitions:
-      word: 词
+      word: 词语
       definition: 定义
       example: 例子
       score: 得分
