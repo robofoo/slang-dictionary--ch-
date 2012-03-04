@@ -11,16 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120227123159) do
+ActiveRecord::Schema.define(:version => 20120304105534) do
 
   create_table "definitions", :force => true do |t|
     t.string   "word"
     t.text     "definition"
     t.text     "example"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "pinyin"
     t.string   "email"
+    t.boolean  "visible",    :default => false
+    t.string   "code"
   end
 
   create_table "users", :force => true do |t|
