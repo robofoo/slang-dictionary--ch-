@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 FactoryGirl.define do
   factory :definition do
     word '看着办'
