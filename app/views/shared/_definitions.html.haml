@@ -1,12 +1,12 @@
-%strong
-  .row.definitions_header
-    .span3
-      = t :'partial.definitions.word'
-    .span4
-      = t :'partial.definitions.definition'
-    .span4
-      = t :'partial.definitions.example'
-    .span1
+.row.definitions_header
+  .span3
+    = t :'partial.definitions.word'
+  .span4
+    = t :'partial.definitions.definition'
+  .span4
+    = t :'partial.definitions.example'
+  .span1
+    .voting
       = t :'partial.definitions.score'
 
 = render :partial => 'shared/definition', :collection => @definitions
