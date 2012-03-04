@@ -28,4 +28,5 @@ group :test, :development do
   gem 'spork-rails'
   gem 'factory_girl_rails'
   gem 'pry'
+  gem 'thin'
 end
