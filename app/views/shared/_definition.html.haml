@@ -10,5 +10,11 @@
     .example
       =definition.example
   .span1
-    voting
+    .voting
+      .up
+        = image_tag asset_path('vote_up.png')
+      .score
+        = [*23..80][rand([*23..80].size)]
+      .down
+        = image_tag asset_path('vote_down.png')
 %hr
