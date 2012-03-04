@@ -18,13 +18,24 @@
 @gridColumnWidth: 50px;
 @gridGutterWidth: 20px;
 @font-size: 13px;
+@letterMenuVerticalSpacing: 10px;
 
 // global: letter menu styles
 @link-background-color: #ddd;
 
 body {
+  .navbar {
+    margin-bottom: @letterMenuVerticalSpacing;
+  }
+
   .navbar-inner {
     .border-radius(0);
+  }
+
+  .letter_menu {
+    hr {
+      margin-top: @letterMenuVerticalSpacing;
+    }
   }
 }
 
@@ -104,6 +115,19 @@ a {
 // form styles
 textarea {
   height: 100px;
+}
+
+
+.slogan {
+  .strong {
+    color: #f89406;
+    font-weight: bold;
+  }
+
+  .alert {
+    padding: 2px 0 2px 0;
+    margin-bottom: 0;
+  }
 }
 
 footer {

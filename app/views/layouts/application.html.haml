@@ -20,8 +20,6 @@
 
 
   %body
-    .home_alert.alert
-      = raw t(:'pages.home.desc')
     .navbar
       .navbar-inner
         .container
@@ -61,15 +59,21 @@
             = render :partial => 'shared/letter_menu'
             = yield
     
-      %footer.pull-right
+      %footer
         %br
-        %span.footer_item
-          &copy;
-          = t :'global.site-name'
-        %span.footer_item
-          = link_to t(:'application-layout.about'), '#'
-        %span.footer_item
-          = link_to t(:'application-layout.contact'), '#'
+        .slogan
+          .alert
+            &nbsp;
+            = raw t(:'pages.home.desc')
+            %span.pull-right
+              %span.footer_item
+                &copy;
+                = t :'global.site-name'
+              %span.footer_item
+                = link_to t(:'application-layout.about'), '#'
+              %span.footer_item
+                = link_to t(:'application-layout.contact'), '#'
+                &nbsp;
     /
       Le javascript
       \==================================================
