@@ -12,6 +12,10 @@ describe Definition do
       it 'has an email address' do
         word.email.should_not == nil
       end
+
+      it 'defaults visibility to false' do
+        word.visible.should == false
+      end
     end
   end
 end
