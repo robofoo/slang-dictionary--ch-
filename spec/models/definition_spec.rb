@@ -17,8 +17,8 @@ describe Definition do
         word.visible.should == false
       end
 
-      it 'defaults reviewed to false' do
-        word.reviewed.should == false
+      it 'defaults confirmed to false' do
+        word.confirmed.should == false
       end
     end
 
