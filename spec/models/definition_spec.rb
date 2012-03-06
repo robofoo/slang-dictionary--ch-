@@ -16,6 +16,10 @@ describe Definition do
       it 'defaults visibility to false' do
         word.visible.should == false
       end
+
+      it 'defaults reviewed to false' do
+        word.reviewed.should == false
+      end
     end
 
     describe "check definition" do

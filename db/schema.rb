@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120304105534) do
+ActiveRecord::Schema.define(:version => 20120306134830) do
 
   create_table "definitions", :force => true do |t|
     t.string   "word"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20120304105534) do
     t.string   "email"
     t.boolean  "visible",    :default => false
     t.string   "code"
+    t.boolean  "reviewed",   :default => false
   end
 
   create_table "users", :force => true do |t|
