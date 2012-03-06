@@ -1,10 +1,7 @@
 class Definition < ActiveRecord::Base
   validates_presence_of :word, :pinyin, :definition, :example, :email
 
-  default_scope where(:visible => true)
-
-  before_create :set_defaults
-  before_save :create_code
+  before_create :set_defaults, :create_code
 
   private
 

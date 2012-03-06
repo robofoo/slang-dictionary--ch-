@@ -17,5 +17,17 @@ describe Definition do
         word.visible.should == false
       end
     end
+
+    describe "check definition" do
+      let(:word) { Factory.create(:definition) }
+
+      # code should not change after user verifies submission
+      it 'keeps same code' do
+        original_code = word.code
+        word.save
+        word.reload
+        original_code.should == word.code
+      end
+    end
   end
 end
