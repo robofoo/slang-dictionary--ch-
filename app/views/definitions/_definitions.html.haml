@@ -7,6 +7,10 @@
     = t :'partial.definitions.example'
   .span1
     .voting
+    -# don't show voting on confirmation page
+    -if params[:action] == 'confirm'
+      &nbsp;
+    -else
       = t :'partial.definitions.score'
 
-= render :partial => 'shared/definition', :collection => @definitions
+= render definitions

@@ -1,0 +1,24 @@
+.row.definitions
+  .span3
+    .chinese
+      =definition.word
+    .pinyin
+      =definition.pinyin
+  .span4
+    =simple_format definition.definition
+  .span4
+    .example
+      =simple_format definition.example
+  .span1
+    -# don't show voting on confirmation page
+    -if params[:action] == 'confirm'
+      &nbsp;
+    -else
+      .voting
+        .up
+          = image_tag asset_path('vote_up.png')
+        .score
+          = [*23..80][rand([*23..80].size)]
+        .down
+          = image_tag asset_path('vote_down.png')
+%hr
