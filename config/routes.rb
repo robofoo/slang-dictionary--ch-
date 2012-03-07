@@ -1,5 +1,9 @@
 UrbanChineseDictionary::Application.routes.draw do
-  resources :definitions
+  resources :definitions do
+    collection do
+      get :thanks
+    end
+  end
 
   devise_for :users
 
@@ -8,6 +12,8 @@ UrbanChineseDictionary::Application.routes.draw do
   match 'define' => 'define#show', :as => "define_show", :via => [:get, :post]
 
   get 'define' => 'define#index'
+
+  get 'confirm' => 'definitions#confirm', :as => 'confirm'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

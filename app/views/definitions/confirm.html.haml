@@ -1,0 +1,14 @@
+-if @definition
+  .alert
+    %h2 Reviewing Submission
+
+    Editors are reviewing your entry.
+
+  = render :partial => 'definitions/definitions', :object => @definition
+-else
+  .alert
+    %h2 Sorry!
+
+    Your entry could not be found. Please 
+    %strong click the email link 
+    sent to you.

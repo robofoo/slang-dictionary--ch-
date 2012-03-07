@@ -1,6 +1,6 @@
 class Definition < ActiveRecord::Base
   validates_presence_of :word, :pinyin, :definition, :example, :email
-  default_scope where(:visible => true)
+  default_scope where(:visible => true, :confirmed => true)
   before_create :set_defaults, :create_code
 
   private
@@ -8,6 +8,7 @@ class Definition < ActiveRecord::Base
   def set_defaults
     # must set manually because of default_scope
     self.visible = false
+    self.confirmed = false
     # returning false would prevent save so return nil
     nil
   end

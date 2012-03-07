@@ -37,6 +37,9 @@ class DefinitionsController < ApplicationController
     @definition = Definition.find(params[:id])
   end
 
+  def thanks
+  end
+
   # POST /definitions
   # POST /definitions.json
   def create
@@ -44,8 +47,7 @@ class DefinitionsController < ApplicationController
 
     respond_to do |format|
       if @definition.save
-        format.html { redirect_to @definition, notice: 'Definition was successfully created.' }
-        format.json { render json: @definition, status: :created, location: @definition }
+        format.html { render action: "thanks" }
       else
         format.html { render action: "new" }
         format.json { render json: @definition.errors, status: :unprocessable_entity }
@@ -80,4 +82,15 @@ class DefinitionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # verify definitions match the code submitted by user
+  def confirm
+    @definition = Definition.unscoped.where(:code => params[:code]).first
+
+    if @definition
+      @definition.confirmed = true
+      @definition.save!
+    end
+  end
+
 end
