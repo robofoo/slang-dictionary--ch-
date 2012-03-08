@@ -47,6 +47,7 @@ class DefinitionsController < ApplicationController
 
     respond_to do |format|
       if @definition.save
+        UserMailer.confirm_definition_email(@definition.email, @definition.word, @definition.code).deliver
         format.html { render action: "thanks" }
       else
         format.html { render action: "new" }
