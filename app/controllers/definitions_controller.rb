@@ -47,8 +47,12 @@ class DefinitionsController < ApplicationController
 
     respond_to do |format|
       if @definition.save
-        UserMailer.confirm_definition_email(@definition.email, @definition.word, @definition.code).deliver
-        format.html { redirect_to action: "thanks" }
+        if user_signed_in?
+          format.html { redirect_to action: "confirm", :code => @definition.code }
+        else
+          UserMailer.confirm_definition_email(@definition.email, @definition.word, @definition.code).deliver
+          format.html { redirect_to action: "thanks" }
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @definition.errors, status: :unprocessable_entity }

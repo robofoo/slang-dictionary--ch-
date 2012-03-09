@@ -15,7 +15,10 @@
         = f.input :pinyin
         = f.input :definition, :hint => "Give some context as it helps make the word easier to understand. Don't name your friend but celebrities are welcome."
         = f.input :example
-        = f.input :email, :hint => "We will keep your email secret. But it's required to submit new words."
+        -if user_signed_in?
+          = f.hidden_field :email, :value => current_user.email
+        -else
+          = f.input :email, :hint => "We will keep your email secret. But it's required to submit new words."
 
       .form-actions
         = f.button :submit
