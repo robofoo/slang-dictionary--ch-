@@ -32,13 +32,14 @@
             %ul.nav
               %li{ :class => params[:action] == 'new' && params[:controller] == 'definitions' ? 'active' : '' }
                 = link_to t(:'application-layout.add'), new_definition_path
-              %li
+              %li{ :class => params[:action] == 'review' && params[:controller] == 'definitions' ? 'active' : '' }
                 = link_to t(:'application-layout.review'), review_definitions_path
             = form_tag define_show_path, { :class => "navbar-search pull-left" } do
               = text_field_tag "word", nil, { :class => "search-query", :placeholder => "Search" }
             %ul.nav.pull-right
               -if user_signed_in?
-                %li= link_to current_user.username, edit_user_registration_path
+                %li{ :class => params[:action] == 'edit' && params[:controller] == 'devise/registrations' ? 'active' : '' }
+                  = link_to current_user.username, edit_user_registration_path
                 %li= link_to t(:'application-layout.logoff'), destroy_user_session_path, :method => :delete
               -else
                 %li{ :class => params[:action] == 'new' && params[:controller] == 'devise/sessions' ? 'active' : '' }= link_to t(:'application-layout.sign-in'), new_user_session_path
