@@ -1,10 +1,10 @@
 -if @definition
-  .alert.alert-success
+  .alert.alert-info
     %h2 Reviewing Submission
 
     Editors are reviewing your entry.
 
-  = render :partial => 'definitions/definitions', :object => @definition
+  = render :partial => 'definitions/definitions', :object => [@definition]
 -else
   .alert.alert-error
     %h2 Sorry!
