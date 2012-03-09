@@ -1,0 +1,8 @@
+.review
+  .alert
+    = t :'definitions.review.desc'
+    .btn.btn-success= t :'definitions.review.accept'
+    .btn.btn-danger= t :'definitions.review.reject'
+    .btn= t :'definitions.review.do-not-know'
+
+= render :partial => 'definitions/definitions', :object => [@definition]

@@ -33,7 +33,7 @@
               %li{ :class => params[:action] == 'new' && params[:controller] == 'definitions' ? 'active' : '' }
                 = link_to t(:'application-layout.add'), new_definition_path
               %li
-                = link_to t(:'application-layout.review'), "/path3"
+                = link_to t(:'application-layout.review'), review_definitions_path
             = form_tag define_show_path, { :class => "navbar-search pull-left" } do
               = text_field_tag "word", nil, { :class => "search-query", :placeholder => "Search" }
             %ul.nav.pull-right

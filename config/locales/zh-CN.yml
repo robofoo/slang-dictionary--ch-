@@ -28,3 +28,10 @@ zh-CN:
       desc:
         城市词典是<span class="strong">你写的</span>词典。
         <i>定义你的世界</i>
+
+  definitions:
+    review:
+      desc: 我们应该接受吗？
+      accept: 接受
+      reject: 拒绝
+      do-not-know: 不知道

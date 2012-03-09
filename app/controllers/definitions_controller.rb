@@ -98,4 +98,9 @@ class DefinitionsController < ApplicationController
     end
   end
 
+  def review
+    valid_defs = Definition.unscoped.where(:confirmed => false, :visible => false)
+    @definition = valid_defs.offset(rand(valid_defs.count)).first
+  end
+
 end

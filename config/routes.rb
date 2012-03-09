@@ -2,6 +2,7 @@ UrbanChineseDictionary::Application.routes.draw do
   resources :definitions do
     collection do
       get :thanks
+      get :review
     end
   end
 
