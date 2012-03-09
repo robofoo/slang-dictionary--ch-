@@ -3,18 +3,24 @@
 -# default to hiding vote buttons
 - show_votes = false unless show_votes
 
-.row.definitions_header
-  .span3
-    = t :'partial.definitions.word'
-  .span4
-    = t :'partial.definitions.definition'
-  .span4
-    = t :'partial.definitions.example'
-  .span1
-    .voting
-    -if show_votes
-      = t :'partial.definitions.score'
-    -else
-      &nbsp;
+-if show_votes
+  .row.definitions_header
+    .span3
+      = t :'partial.definitions.word'
+    .span4
+      = t :'partial.definitions.definition'
+    .span4
+      = t :'partial.definitions.example'
+    .span1
+      .voting
+        = t :'partial.definitions.score'
+-else
+  .row.definitions_header
+    .span4
+      = t :'partial.definitions.word'
+    .span4
+      = t :'partial.definitions.definition'
+    .span4
+      = t :'partial.definitions.example'
 
 = render :partial => 'definitions/definition', :collection => definitions, :locals => { :show_votes => show_votes }

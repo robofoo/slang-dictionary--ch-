@@ -3,19 +3,19 @@
 -# default to hiding vote buttons
 - show_votes = false unless show_votes
 
-.row.definitions
-  .span3
-    .chinese
-      =definition.word
-    .pinyin
-      =definition.pinyin
-  .span4
-    =simple_format definition.definition
-  .span4
-    .example
-      =simple_format definition.example
-  .span1
-    -if show_votes
+-if show_votes
+  .row.definitions
+    .span3
+      .chinese
+        =definition.word
+      .pinyin
+        =definition.pinyin
+    .span4
+      =simple_format definition.definition
+    .span4
+      .example
+        =simple_format definition.example
+    .span1
       .voting
         .up
           = image_tag asset_path('vote_up.png')
@@ -23,6 +23,16 @@
           = [*23..80][rand([*23..80].size)]
         .down
           = image_tag asset_path('vote_down.png')
-    -else
-      &nbsp;
+-else
+  .row.definitions
+    .span4
+      .chinese
+        =definition.word
+      .pinyin
+        =definition.pinyin
+    .span4
+      =simple_format definition.definition
+    .span4
+      .example
+        =simple_format definition.example
 %hr
