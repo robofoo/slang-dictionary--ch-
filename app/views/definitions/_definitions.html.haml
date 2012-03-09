@@ -1,3 +1,8 @@
+-#:show_votes determines wheither or not to show voting buttons
+
+-# default to hiding vote buttons
+- show_votes = false unless show_votes
+
 .row.definitions_header
   .span3
     = t :'partial.definitions.word'
@@ -7,10 +12,9 @@
     = t :'partial.definitions.example'
   .span1
     .voting
-    -# don't show voting on confirmation page
-    -if params[:action] == 'confirm'
-      &nbsp;
-    -else
+    -if show_votes
       = t :'partial.definitions.score'
+    -else
+      &nbsp;
 
-= render definitions
+= render :partial => 'definitions/definition', :collection => definitions, :locals => { :show_votes => show_votes }

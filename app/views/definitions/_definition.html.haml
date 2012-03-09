@@ -1,3 +1,8 @@
+-#:show_votes determines wheither or not to show voting buttons
+
+-# default to hiding vote buttons
+- show_votes = false unless show_votes
+
 .row.definitions
   .span3
     .chinese
@@ -10,10 +15,7 @@
     .example
       =simple_format definition.example
   .span1
-    -# don't show voting on confirmation page
-    -if params[:action] == 'confirm'
-      &nbsp;
-    -else
+    -if show_votes
       .voting
         .up
           = image_tag asset_path('vote_up.png')
@@ -21,4 +23,6 @@
           = [*23..80][rand([*23..80].size)]
         .down
           = image_tag asset_path('vote_down.png')
+    -else
+      &nbsp;
 %hr
