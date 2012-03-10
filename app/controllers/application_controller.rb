@@ -9,11 +9,13 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    redirect_url = stored_location_for(resource) || root_path
+
     # if we came from accept or reject page goto review page instead
-    if stored_location_for(resource).match(/accept$/) || stored_location_for(resource).match(/reject$/)
+    if redirect_url.match(/accept$/) || redirect_url.match(/reject$/)
       review_definitions_path
     else
-      stored_location_for(resource) || root_path
+      redirect_url
     end
   end
 
