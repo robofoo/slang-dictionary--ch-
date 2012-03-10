@@ -31,7 +31,7 @@ zh-CN:
 
   definitions:
     review:
-      desc: 我们应该接受吗？
+      desc: 您可以接受吗？
       accept: 接受
       reject: 拒绝
       do-not-know: 不知道
