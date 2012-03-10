@@ -35,3 +35,5 @@ zh-CN:
       accept: 接受
       reject: 拒绝
       do-not-know: 不知道
+      accept-message: "你接受了: %{word}"
+      reject-message: "你拒绝了: %{word}"

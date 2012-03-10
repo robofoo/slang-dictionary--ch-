@@ -103,4 +103,16 @@ class DefinitionsController < ApplicationController
     @definition = valid_defs.offset(rand(valid_defs.count)).first
   end
 
+  def accept
+    definition = Definition.unscoped.find(params[:id])
+    message = t :'definitions.review.accept-message', :word => definition.word
+    redirect_to({ :action => 'review' }, :flash => { success:message })
+  end
+
+  def reject
+    definition = Definition.unscoped.find(params[:id])
+    message = t :'definitions.review.reject-message', :word => definition.word
+    redirect_to({ :action => 'review' }, :flash => { error:message })
+  end
+
 end

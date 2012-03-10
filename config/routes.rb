@@ -1,8 +1,11 @@
 UrbanChineseDictionary::Application.routes.draw do
   resources :definitions do
     collection do
-      get :thanks
-      get :review
+      get :thanks, :review
+    end
+
+    member do
+      post :accept, :reject
     end
   end
 

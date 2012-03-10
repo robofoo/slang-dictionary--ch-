@@ -1,8 +1,14 @@
 .review
   .alert
-    = t :'definitions.review.desc'
-    .btn.btn-success= t :'definitions.review.accept'
-    .btn.btn-danger= t :'definitions.review.reject'
-    .btn= t :'definitions.review.do-not-know'
+    %table#review
+      %tr
+        %td#desc
+          = t :'definitions.review.desc'
+        %td
+          = button_to t(:'definitions.review.accept'), accept_definition_path(@definition), :method => :post, :class => 'btn btn-success', :style => "float:left"
+        %td
+          = button_to t(:'definitions.review.reject'), reject_definition_path(@definition), :method => :post, :class => 'btn btn-danger', :style => "float:left"
+        %td
+          = button_to t(:'definitions.review.do-not-know'), review_definitions_path, :method => :get, :class => 'btn', :style => "float:left"
 
 = render :partial => 'definitions/definitions', :object => [@definition]
