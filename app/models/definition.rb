@@ -18,4 +18,14 @@ class Definition < ActiveRecord::Base
   def create_code
     self.code = SecureRandom.hex(6)
   end
+
+  def self.random_unconfirmed(user_signed_in)
+    valid_defs = Definition.unscoped.where(:confirmed => false, :visible => false)
+
+    if valid_defs.count > 0
+      valid_defs.offset(rand(valid_defs.count)).first
+    else
+      valid_defs
+    end
+  end
 end
