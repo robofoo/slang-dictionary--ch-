@@ -1,14 +1,21 @@
-.review
-  .well
-    %table#review
-      %tr
-        %td#desc
-          = t :'definitions.review.desc'
-        %td
-          = button_to t(:'definitions.review.accept'), accept_definition_path(@definition), :method => :post, :class => 'btn btn-success', :style => "float:left"
-        %td
-          = button_to t(:'definitions.review.reject'), reject_definition_path(@definition), :method => :post, :class => 'btn btn-danger', :style => "float:left"
-        %td
-          = button_to t(:'definitions.review.do-not-know'), review_definitions_path, :method => :get, :class => 'btn', :style => "float:left"
+-if @definition
+  .review
+    .well
+      %table#review
+        %tr
+          %td#desc
+            = t :'definitions.review.desc'
+          %td
+            = button_to t(:'definitions.review.accept'), accept_definition_path(@definition), :method => :post, :class => 'btn btn-success', :style => "float:left"
+          %td
+            = button_to t(:'definitions.review.reject'), reject_definition_path(@definition), :method => :post, :class => 'btn btn-danger', :style => "float:left"
+          %td
+            = button_to t(:'definitions.review.do-not-know'), review_definitions_path, :method => :get, :class => 'btn', :style => "float:left"
 
-= render :partial => 'definitions/definitions', :object => [@definition]
+  = render :partial => 'definitions/definitions', :object => [@definition]
+-else
+  .review
+    .well
+      #review
+        #desc
+          = raw t(:'definitions.review.nothing-message', :add_word_url => new_definition_path)

@@ -39,3 +39,6 @@ zh-CN:
       reject-message: "你拒绝了 \"%{word}\""
       signin-message:
         请您先登录然后接受词语。
+      nothing-message:
+        对不起没有词语可评介。您应该
+        <a href="%{add_word_url}">加吧</a>。
