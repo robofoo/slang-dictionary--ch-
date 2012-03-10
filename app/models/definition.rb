@@ -20,7 +20,7 @@ class Definition < ActiveRecord::Base
   end
 
   def self.random_unconfirmed(user_signed_in)
-    valid_defs = Definition.unscoped.where(:confirmed => false, :visible => false)
+    valid_defs = Definition.unscoped.where(:confirmed => true, :visible => false)
 
     if valid_defs.count > 0
       valid_defs.offset(rand(valid_defs.count)).first
