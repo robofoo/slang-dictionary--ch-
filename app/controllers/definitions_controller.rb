@@ -104,15 +104,23 @@ class DefinitionsController < ApplicationController
   end
 
   def accept
-    definition = Definition.unscoped.find(params[:id])
-    message = t :'definitions.review.accept-message', :word => definition.word
-    redirect_to({ :action => 'review' }, :flash => { success:message })
+    if user_signed_in?
+      definition = Definition.unscoped.find(params[:id])
+      message = t :'definitions.review.accept-message', :word => definition.word
+      redirect_to({ :action => 'review' }, :flash => { success:message })
+    else
+      redirect_to new_user_session_path, :alert => t(:'definitions.review.signin-message')
+    end
   end
 
   def reject
-    definition = Definition.unscoped.find(params[:id])
-    message = t :'definitions.review.reject-message', :word => definition.word
-    redirect_to({ :action => 'review' }, :flash => { error:message })
+    if user_signed_in?
+      definition = Definition.unscoped.find(params[:id])
+      message = t :'definitions.review.reject-message', :word => definition.word
+      redirect_to({ :action => 'review' }, :flash => { error:message })
+    else
+      redirect_to new_user_session_path, :alert => t(:'definitions.review.signin-message')
+    end
   end
 
 end

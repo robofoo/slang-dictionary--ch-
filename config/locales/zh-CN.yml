@@ -37,3 +37,5 @@ zh-CN:
       do-not-know: 不知道
       accept-message: "你接受了 \"%{word}\""
       reject-message: "你拒绝了 \"%{word}\""
+      signin-message:
+        请您先登录然后接受词语。
