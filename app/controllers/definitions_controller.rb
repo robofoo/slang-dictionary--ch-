@@ -105,6 +105,7 @@ class DefinitionsController < ApplicationController
   def accept
     if user_signed_in?
       definition = Definition.unscoped.find(params[:id])
+      current_user.vote_for(definition)
       message = t :'definitions.review.accept-message', :word => definition.word
       redirect_to({ :action => 'review' }, :flash => { success:message })
     else
@@ -115,6 +116,7 @@ class DefinitionsController < ApplicationController
   def reject
     if user_signed_in?
       definition = Definition.unscoped.find(params[:id])
+      current_user.vote_against(definition)
       message = t :'definitions.review.reject-message', :word => definition.word
       redirect_to({ :action => 'review' }, :flash => { error:message })
     else
