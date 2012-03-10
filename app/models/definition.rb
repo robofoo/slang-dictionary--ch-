@@ -3,6 +3,8 @@ class Definition < ActiveRecord::Base
   default_scope where(:visible => true, :confirmed => true)
   before_create :set_defaults, :create_code
 
+  acts_as_voteable
+
   private
 
   def set_defaults
