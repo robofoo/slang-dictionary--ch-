@@ -27,17 +27,26 @@ class Definition < ActiveRecord::Base
     self.code = SecureRandom.hex(6)
   end
 
+
   def self.random_unconfirmed(current_user = nil)
     valid_defs = Definition.where(:status => 'confirmed')
 
     # don't show own submitted words
     valid_defs = valid_defs.where('email != ?', current_user.email) if current_user
 
-    # don't show ones already voted on
-    #valid_defs = valid_defs - current_user.
+    # don't show definitions user already voted on
+    if current_user
+      voteable_ids = Vote.find(current_user.vote_ids).map { |v| v.voteable_id }
+      voted_by_user = Definition.find(voteable_ids)
+      valid_defs = valid_defs - voted_by_user
+    end
 
     if valid_defs.count > 0
-      valid_defs.offset(rand(valid_defs.count)).first
+      if valid_defs.class == Array
+        valid_defs[rand(valid_defs.size)]
+      else
+        valid_defs.offset(rand(valid_defs.count)).first
+      end
     else
       valid_defs
     end
