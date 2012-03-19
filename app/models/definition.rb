@@ -45,7 +45,7 @@ class Definition < ActiveRecord::Base
   # turn "ni3hao3ma5"
   # into "ni3 hao3 ma5"
   def space_pinyin_with_tones
-    self.pinyin_with_tones = self.pinyin_with_tones.split('').map { |a| a.match(/\d/) ? a + ' ' : a }.join.rstrip
+    self.pinyin_with_tones.gsub!(/(\d)/, '\1 ').rstrip!
   end
 
   def self.random_unconfirmed(current_user = nil)
