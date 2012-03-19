@@ -1,6 +1,6 @@
 class Definition < ActiveRecord::Base
-  validates_presence_of :word, :pinyin, :definition, :example, :email, :status
-  before_create :create_code
+  validates_presence_of :word, :pinyin_with_tones, :definition, :example, :email, :status
+  before_create :create_code, :strip_pinyin_tones
 
   # raw - when anon users submits a word
   # confirmed - anon user clicks email link to confirm word
@@ -37,6 +37,10 @@ class Definition < ActiveRecord::Base
     self.code = SecureRandom.hex(6)
   end
 
+  def strip_pinyin_tones
+    # also strip spaces
+    self.pinyin = self.pinyin_with_tones.gsub(/\d/, '').gsub(' ', '')
+  end
 
   def self.random_unconfirmed(current_user = nil)
     valid_defs = Definition.where(:status => 'confirmed')

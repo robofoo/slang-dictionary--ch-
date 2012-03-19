@@ -7,6 +7,11 @@ describe Definition do
         invalid_word = Factory.create(:definition, status:'invalid')
       end.should raise_error
     end
+
+    it 'strips pinyin of tone markers', r:true do
+      new_def = Factory.create(:definition)
+      new_def.pinyin.match(/\d/).should == nil
+    end
   end
 
   context "logged in user" do
