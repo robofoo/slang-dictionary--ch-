@@ -99,7 +99,7 @@ class DefinitionsController < ApplicationController
   end
 
   def review
-    @definition = Definition.random_unconfirmed(user_signed_in?)
+    @definition = Definition.random_unconfirmed(current_user)
   end
 
   def accept
