@@ -1,26 +1,20 @@
 class Definition < ActiveRecord::Base
-  validates_presence_of :word, :pinyin, :definition, :example, :email
-  default_scope where(:visible => true, :confirmed => true)
-  before_create :set_defaults, :create_code
+  validates_presence_of :word, :pinyin, :definition, :example, :email, :status
+  before_create :create_code
+
+  STATUSES = %w[new confirmed reviewed flagged normal]
+  validates_inclusion_of :status, :in => STATUSES, :message => "{{value}} must be in #{STATUSES.join(',')}"
 
   acts_as_voteable
 
   private
-
-  def set_defaults
-    # must set manually because of default_scope
-    self.visible = false
-    self.confirmed = false
-    # returning false would prevent save so return nil
-    nil
-  end
 
   def create_code
     self.code = SecureRandom.hex(6)
   end
 
   def self.random_unconfirmed(current_user)
-    valid_defs = Definition.unscoped.where(:confirmed => true, :visible => false)
+    valid_defs = Definition.where(:status => 'new')
 
     # don't show own submitted words
     valid_defs = valid_defs.where('email != ?', current_user.email) if current_user

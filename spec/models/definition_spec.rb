@@ -1,10 +1,18 @@
 require 'spec_helper'
 
 describe Definition do
+  let(:word) { Factory.create(:definition) }
+
+  describe "create new definition" do
+    it 'does not allow invalid status' do
+      lambda do
+        invalid_word = Factory.create(:definition, status:'invalid')
+      end.should raise_error
+    end
+  end
+
   context "anon user" do
     describe "create new definition" do
-      let(:word) { Factory.create(:definition) }
-
       it 'creates code' do
         word.code.should_not == nil
       end
@@ -13,18 +21,12 @@ describe Definition do
         word.email.should_not == nil
       end
 
-      it 'defaults visibility to false' do
-        word.visible.should == false
-      end
-
-      it 'defaults confirmed to false' do
-        word.confirmed.should == false
+      it "defaults status to 'new'" do
+        word.status.should == 'new'
       end
     end
 
     describe "check definition" do
-      let(:word) { Factory.create(:definition) }
-
       # code should not change after user verifies submission
       it 'keeps same code' do
         original_code = word.code

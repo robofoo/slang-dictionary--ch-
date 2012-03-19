@@ -90,7 +90,7 @@ class DefinitionsController < ApplicationController
 
   # verify definitions match the code submitted by user
   def confirm
-    @definition = Definition.unscoped.where(:code => params[:code]).first
+    @definition = Definition.where(:code => params[:code]).first
 
     if @definition
       @definition.confirmed = true
@@ -104,7 +104,7 @@ class DefinitionsController < ApplicationController
 
   def accept
     if user_signed_in?
-      definition = Definition.unscoped.find(params[:id])
+      definition = Definition.find(params[:id])
       current_user.clear_votes(definition)
       current_user.vote_for(definition)
       message = t :'definitions.review.accept-message', :word => definition.word
@@ -116,7 +116,7 @@ class DefinitionsController < ApplicationController
 
   def reject
     if user_signed_in?
-      definition = Definition.unscoped.find(params[:id])
+      definition = Definition.find(params[:id])
       current_user.clear_votes(definition)
       current_user.vote_against(definition)
       message = t :'definitions.review.reject-message', :word => definition.word
