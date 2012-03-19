@@ -12,7 +12,7 @@
           = f.input :word, :label => 'Word (in Chinese)', :input_html => { :value => @new_word }
         -else
           = f.input :word, :label => 'Word (in Chinese)'
-        = f.input :pinyin
+        = f.input :pinyin_with_tones, :label => 'pinyin'
         = f.input :definition, :hint => "Give some context as it helps make the word easier to understand. Don't name your friend but celebrities are welcome."
         = f.input :example
         -if user_signed_in?
