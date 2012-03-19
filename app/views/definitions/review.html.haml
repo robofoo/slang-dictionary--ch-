@@ -14,8 +14,4 @@
 
   = render :partial => 'definitions/definitions', :object => [@definition]
 -else
-  .review
-    .well
-      #review
-        #desc
-          = raw t(:'definitions.review.nothing-message', :add_word_url => new_definition_path)
+  = render :partial => 'shared/definition_not_found'

@@ -1,1 +1,4 @@
-= render :partial => 'definitions/definitions', :object => @definitions, :locals => { :show_votes => true }
+-if @definitions.present?
+  = render :partial => 'definitions/definitions', :object => @definitions, :locals => { :show_votes => true }
+-else
+  = render :partial => 'shared/definition_not_found'
