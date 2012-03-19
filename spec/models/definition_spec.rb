@@ -64,6 +64,45 @@ describe Definition do
         defs.blank?.should == true
       end
     end
+
+    describe "#accept" do
+      before(:each) do
+        @def1 = Factory.create(:definition)
+      end
+
+      before(:all) do
+        @user1 = Factory.create(:user)
+        @user2 = Factory.create(:user)
+        @user3 = Factory.create(:user)
+        @user4 = Factory.create(:user)
+      end
+
+      after(:all) do
+        [Definition, User].each do |i|
+          i.destroy_all
+        end
+      end
+
+      it 'upgrade status if score is high enough' do
+        @def1.accept(@user1)
+        @def1.accept(@user2)
+        @def1.accept(@user3)
+        @def1.status.should == 'raw'
+
+        @def1.accept(@user4)
+        @def1.status.should == 'reviewed'
+      end
+      
+      it 'downgrade status if score is low enough' do
+        @def1.reject(@user1)
+        @def1.reject(@user2)
+        @def1.reject(@user3)
+        @def1.status.should == 'raw'
+
+        @def1.reject(@user4)
+        @def1.status.should == 'flagged'
+      end
+    end
   end
 
   context "anon user" do

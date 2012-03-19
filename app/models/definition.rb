@@ -15,9 +15,19 @@ class Definition < ActiveRecord::Base
     current_user.clear_votes(self)
     current_user.vote_for(self)
 
-    # change to 'reviewed' if score is high enough
+    # upgrade status to 'reviewed' if score is high enough
     if self.plusminus > 3
       self.status = 'reviewed'
+    end
+  end
+
+  def reject(current_user)
+    current_user.clear_votes(self)
+    current_user.vote_against(self)
+
+    # downgrade status to 'flagged' if score is low enough
+    if self.plusminus < -3
+      self.status = 'flagged'
     end
   end
 
