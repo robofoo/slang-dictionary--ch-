@@ -1,6 +1,6 @@
 class Definition < ActiveRecord::Base
   validates_presence_of :word, :pinyin_with_tones, :definition, :example, :email, :status
-  before_create :create_code, :strip_pinyin_tones
+  before_create :create_code, :strip_pinyin_tones, :space_pinyin_with_tones
 
   # raw - when anon users submits a word
   # confirmed - anon user clicks email link to confirm word
@@ -40,6 +40,12 @@ class Definition < ActiveRecord::Base
   def strip_pinyin_tones
     # also strip spaces
     self.pinyin = self.pinyin_with_tones.gsub(/\d/, '').gsub(' ', '')
+  end
+
+  # turn "ni3hao3ma5"
+  # into "ni3 hao3 ma5"
+  def space_pinyin_with_tones
+    self.pinyin_with_tones = self.pinyin_with_tones.split('').map { |a| a.match(/\d/) ? a + ' ' : a }.join.rstrip
   end
 
   def self.random_unconfirmed(current_user = nil)

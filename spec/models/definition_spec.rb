@@ -8,9 +8,14 @@ describe Definition do
       end.should raise_error
     end
 
-    it 'strips pinyin of tone markers', r:true do
+    it 'strips pinyin of tone markers' do
       new_def = Factory.create(:definition)
       new_def.pinyin.match(/\d/).should == nil
+    end
+
+    it 'formats pinyin_with_tones with spaces' do
+      new_def = Factory.create(:definition, pinyin_with_tones:'ni3hao3ma5')
+      new_def.pinyin_with_tones.should == 'ni3 hao3 ma5'
     end
   end
 
