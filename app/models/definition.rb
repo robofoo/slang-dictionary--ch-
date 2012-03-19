@@ -2,6 +2,10 @@ class Definition < ActiveRecord::Base
   validates_presence_of :word, :pinyin, :definition, :example, :email, :status
   before_create :create_code
 
+  # raw - when anon users submits a word
+  # confirmed - anon user clicks email link to confirm word
+  # reviewed - words we show - editors have reviewed and like the word
+  # flagged - words we hide - words under review by editors after flagged by users
   STATUSES = %w[raw confirmed reviewed flagged]
   validates_inclusion_of :status, :in => STATUSES, :message => "{{value}} must be in #{STATUSES.join(',')}"
 
@@ -23,7 +27,7 @@ class Definition < ActiveRecord::Base
     self.code = SecureRandom.hex(6)
   end
 
-  def self.random_unconfirmed(current_user)
+  def self.random_unconfirmed(current_user = nil)
     valid_defs = Definition.where(:status => 'confirmed')
 
     # don't show own submitted words
