@@ -93,7 +93,7 @@ class DefinitionsController < ApplicationController
     @definition = Definition.where(:code => params[:code]).first
 
     if @definition
-      @definition.confirmed = true
+      @definition.status = 'confirmed'
       @definition.save!
     end
   end
@@ -105,8 +105,7 @@ class DefinitionsController < ApplicationController
   def accept
     if user_signed_in?
       definition = Definition.find(params[:id])
-      current_user.clear_votes(definition)
-      current_user.vote_for(definition)
+      definition.accept(current_user)
       message = t :'definitions.review.accept-message', :word => definition.word
       redirect_to({ :action => 'review' }, :flash => { success:message })
     else

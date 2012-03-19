@@ -1,12 +1,13 @@
 class PagesController < ApplicationController
   def home
     random_per_page = 3
-    def_count = Definition.count
+    valid_defs = Definition.where(:status => 'reviewed')
+    def_count = valid_defs.count
 
     if def_count > random_per_page
-      @definitions = Definition.offset(rand(def_count - (random_per_page - 1)))[0..(random_per_page - 1)]
+      @definitions = valid_defs.offset(rand(def_count - (random_per_page - 1)))[0..(random_per_page - 1)]
     else
-      @definitions = Definition.all
+      @definitions = valid_defs.all
     end
   end
 end

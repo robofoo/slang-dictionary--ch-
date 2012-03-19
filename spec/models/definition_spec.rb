@@ -21,8 +21,8 @@ describe Definition do
         word.email.should_not == nil
       end
 
-      it "defaults status to 'new'" do
-        word.status.should == 'new'
+      it "defaults status to 'raw'" do
+        word.status.should == 'raw'
       end
     end
 

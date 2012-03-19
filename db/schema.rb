@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20120319031801) do
     t.string   "pinyin"
     t.string   "email"
     t.string   "code"
-    t.string   "status",     :default => "new"
+    t.string   "status",     :default => "raw"
   end
 
   create_table "users", :force => true do |t|
