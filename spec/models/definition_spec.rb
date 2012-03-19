@@ -10,21 +10,20 @@ describe Definition do
   end
 
   context "logged in user" do
-
-    before(:all) do
-      @user1 = Factory.create(:user)
-      Factory.create(:definition, email:@user1.email)
-      Factory.create(:definition, email:'user2@email.com')
-      Factory.create(:definition, email:'user2@email.com')
-    end
-
-    after(:all) do
-      [Definition, User].each do |i|
-        i.destroy_all
-      end
-    end
-    
     describe ".random_unconfirmed" do
+      before(:all) do
+        @user1 = Factory.create(:user)
+        Factory.create(:definition, email:@user1.email)
+        Factory.create(:definition)
+        Factory.create(:definition)
+      end
+
+      after(:all) do
+        [Definition, User].each do |i|
+          i.destroy_all
+        end
+      end
+    
       it 'does not show any definitions that are unconfirmed' do
         defs = Definition.random_unconfirmed(@user1)
         defs.count.should == 0
