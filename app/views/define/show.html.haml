@@ -1,5 +1,8 @@
+-per_page = 3
+
 -if !@definitions.nil? && !@definitions.empty?
-  = render :partial => 'definitions/definitions', :object => @definitions, :locals => { :show_votes => true }
+  = render :partial => 'definitions/definitions', :object => @definitions.paginate(:page => params[:page], :per_page => per_page), :locals => { :show_votes => true }
+  = will_paginate @definitions.paginate(:page => params[:page], :per_page => per_page), :class => 'apple_pagination'
 -else
   .chinese= params[:word]
   not defined

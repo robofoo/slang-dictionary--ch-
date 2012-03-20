@@ -10,6 +10,7 @@ gem 'cancan'
 gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'simple_form', '~> 2.0'
 gem 'thumbs_up'
+gem 'will_paginate', '~> 3.0'
 
 group :production do
   gem 'pg'
