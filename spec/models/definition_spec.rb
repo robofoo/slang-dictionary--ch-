@@ -1,6 +1,20 @@
 require 'spec_helper'
 
 describe Definition do
+  describe "#pinyin" do
+    it 'nicely formats pinyin_original with spaces' do
+      new_def = Factory.create(:definition, pinyin_original:'ni3hao3ma5')
+      new_def.pinyin.should == 'ni3 hao3 ma5'
+    end
+  end
+
+  describe "pinyin_for_search field" do
+    it 'gets created' do
+      new_def = Factory.create(:definition, pinyin_original:'ni3hao3ma5')
+      new_def.pinyin_for_search.should == 'nihaoma'
+    end
+  end
+
   describe "create new definition" do
     it 'does not allow invalid status' do
       lambda do
@@ -11,11 +25,6 @@ describe Definition do
     it 'strips pinyin of tone markers' do
       new_def = Factory.create(:definition)
       new_def.pinyin.match(/\d/).should == nil
-    end
-
-    it 'formats pinyin_with_tones with spaces' do
-      new_def = Factory.create(:definition, pinyin_with_tones:'ni3hao3ma5')
-      new_def.pinyin_with_tones.should == 'ni3 hao3 ma5'
     end
   end
 

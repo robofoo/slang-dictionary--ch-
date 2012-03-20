@@ -1,6 +1,6 @@
 class Definition < ActiveRecord::Base
-  validates_presence_of :word, :pinyin_with_tones, :definition, :example, :email, :status
-  before_create :create_code, :strip_pinyin_tones, :space_pinyin_with_tones
+  validates_presence_of :word, :pinyin_original, :definition, :example, :email, :status
+  before_create :create_code, :prepare_pinyin_for_search
 
   # raw - when anon users submits a word
   # confirmed - anon user clicks email link to confirm word
@@ -31,21 +31,26 @@ class Definition < ActiveRecord::Base
     end
   end
 
+  # nicely formatted pinyin to use in views
+  # turn "ni3hao3ma5"
+  # into "ni3 hao3 ma5"
+  def pinyin
+    if self.pinyin_original
+      self.pinyin_original.gsub(/(\d)/, '\1 ').rstrip
+    else
+      ''
+    end
+  end
+
   private
 
   def create_code
     self.code = SecureRandom.hex(6)
   end
 
-  def strip_pinyin_tones
+  def prepare_pinyin_for_search
     # also strip spaces
-    self.pinyin = self.pinyin_with_tones.gsub(/\d/, '').gsub(' ', '')
-  end
-
-  # turn "ni3hao3ma5"
-  # into "ni3 hao3 ma5"
-  def space_pinyin_with_tones
-    self.pinyin_with_tones.gsub!(/(\d)/, '\1 ').rstrip!
+    self.pinyin_for_search = self.pinyin_original.gsub(/\d/, '').gsub(' ', '')
   end
 
   def self.random_unconfirmed(current_user = nil)
