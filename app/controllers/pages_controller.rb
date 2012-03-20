@@ -10,4 +10,7 @@ class PagesController < ApplicationController
       @definitions = valid_defs.all
     end
   end
+
+  def contact
+  end
 end

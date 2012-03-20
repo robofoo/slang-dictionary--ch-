@@ -28,6 +28,12 @@ zh-CN:
       desc:
         城市词典是<span class="strong">你写的</span>词典。
         <i>定义你的世界</i>
+    contact:
+      title: 联系我们
+      desc: "%{email}"
+    about:
+      title: 关于我们
+      desc:
 
   definitions:
     review:

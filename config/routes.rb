@@ -12,6 +12,7 @@ UrbanChineseDictionary::Application.routes.draw do
   devise_for :users
 
   root :to => 'pages#home'
+  get 'contact' => 'pages#contact'
 
   match 'define' => 'define#show', :as => "define_show", :via => [:get, :post]
 
