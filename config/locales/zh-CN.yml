@@ -33,7 +33,7 @@ zh-CN:
       desc: "%{email}"
     about:
       title: 关于我们
-      desc:
+      desc: 你好！ 再见！
 
   definitions:
     review:

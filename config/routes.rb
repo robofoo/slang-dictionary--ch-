@@ -13,6 +13,7 @@ UrbanChineseDictionary::Application.routes.draw do
 
   root :to => 'pages#home'
   get 'contact' => 'pages#contact'
+  get 'about' => 'pages#about'
 
   match 'define' => 'define#show', :as => "define_show", :via => [:get, :post]
 
