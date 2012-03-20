@@ -48,3 +48,7 @@ zh-CN:
       nothing-message:
         对不起没有词语可评介。您应该
         <a href="%{add_word_url}">加吧</a>。
+
+  will_paginate:
+    previous_label: 上
+    next_label: 下
