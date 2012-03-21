@@ -18,11 +18,11 @@
     .span1
       .voting
         .up
-          = image_tag asset_path('vote_up.png')
+          = image_tag asset_path('vote_up.png'), { :data_def_id => definition.id }
         .score
-          = [*23..80][rand([*23..80].size)]
+          = definition.plusminus
         .down
-          = image_tag asset_path('vote_down.png')
+          = image_tag asset_path('vote_down.png'), { :data_def_id => definition.id }
 -else
   .row.definitions
     .span4
