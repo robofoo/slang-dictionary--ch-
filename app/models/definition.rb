@@ -12,22 +12,22 @@ class Definition < ActiveRecord::Base
   acts_as_voteable
 
   def accept(current_user)
-    current_user.clear_votes(self)
-    current_user.vote_for(self)
+    current_user.vote_exclusively_for(self)
 
     # upgrade status to 'reviewed' if score is high enough
-    if self.plusminus > 3
+    if self.plusminus > 0
       self.status = 'reviewed'
+      self.save!
     end
   end
 
   def reject(current_user)
-    current_user.clear_votes(self)
-    current_user.vote_against(self)
+    current_user.vote_exclusively_against(self)
 
     # downgrade status to 'flagged' if score is low enough
-    if self.plusminus < -3
+    if self.plusminus < -5
       self.status = 'flagged'
+      self.save!
     end
   end
 
