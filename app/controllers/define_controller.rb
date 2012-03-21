@@ -1,18 +1,18 @@
 class DefineController < ApplicationController
   def show
+    per_page = 3
+
     # from letter menu
     @char = params[:char]
 
     if @char
-      chinese = Definition.where(:word => @char..@char.next, :status => 'reviewed')
-      pinyin = Definition.where(:pinyin_for_search => @char..@char.next, :status => 'reviewed')
+      definitions = Definition.where('pinyin_for_search between ? and ? or word between ? and ?', @char, @char.next, @char, @char.next).where(:status => 'reviewed')
     # from search
     else
-      chinese = Definition.where('word like ?', params[:word] + "%").where(:status => 'reviewed')
-      # pinyin_for_search has spaces stripped
-      pinyin = Definition.where('pinyin_for_search like ?', params[:word].gsub(' ','') + "%").where(:status => 'reviewed')
+      word_to_find = params[:word].gsub(' ', '') + "%"
+      definitions = Definition.where('pinyin_for_search like ? or word like ?', word_to_find, word_to_find).where(:status => 'reviewed')
     end
 
-    @definitions = chinese + pinyin
+    @definitions = definitions.paginate(:page => params[:page], :per_page => per_page)
   end
 end
