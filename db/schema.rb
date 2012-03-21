@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120320061329) do
+ActiveRecord::Schema.define(:version => 20120321140759) do
 
   create_table "definitions", :force => true do |t|
     t.string   "word"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20120320061329) do
     t.string   "code"
     t.string   "status",            :default => "raw"
     t.string   "pinyin_original"
+    t.integer  "score",             :default => 0
   end
 
   create_table "users", :force => true do |t|

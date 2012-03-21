@@ -13,6 +13,6 @@ class DefineController < ApplicationController
       definitions = Definition.where('pinyin_for_search like ? or word like ?', word_to_find, word_to_find).where(:status => 'reviewed')
     end
 
-    @definitions = definitions.paginate(:page => params[:page], :per_page => per_page)
+    @definitions = definitions.paginate(:page => params[:page], :per_page => per_page).order("score desc, created_at desc")
   end
 end
