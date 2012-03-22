@@ -5,6 +5,7 @@ UrbanChineseDictionary::Application.routes.draw do
     end
 
     member do
+      get :upvote, :downvote
       post :accept, :reject
     end
   end

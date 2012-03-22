@@ -1,6 +1,46 @@
 require 'spec_helper'
 
 describe Definition do
+  describe "#upvote(user)" do
+    it 'votes up and updates score' do
+      user = Factory.create(:user)
+      new_def = Factory.create(:definition)
+      old_score = new_def.score
+      old_vote_count = new_def.votes.count
+
+      new_def.upvote(user)
+      new_def.score.should == old_score + 1
+      new_def.votes.count.should == old_vote_count + 1
+    end
+
+    it 'clears votes if already voted for' do
+      user = Factory.create(:user)
+      new_def = Factory.create(:definition)
+      old_score = new_def.score
+      old_vote_count = new_def.votes.count
+      new_def.upvote(user)
+      new_def.score.should == old_score + 1
+      new_def.votes.count.should == old_vote_count + 1
+
+      new_def.upvote(user)
+      new_def.score.should == old_score
+      new_def.votes.count.should == old_vote_count
+    end
+  end
+
+  describe "#downvote(user)" do
+    it 'votes down and updates score' do
+      user = Factory.create(:user)
+      new_def = Factory.create(:definition)
+      old_score = new_def.score
+      old_vote_count = new_def.votes.count
+
+      new_def.downvote(user)
+      new_def.score.should == old_score - 1
+      new_def.votes.count.should == old_vote_count + 1
+    end
+  end
+
   describe "#pinyin" do
     it 'nicely formats pinyin_original with spaces' do
       new_def = Factory.create(:definition, pinyin_original:'ni3hao3ma5')

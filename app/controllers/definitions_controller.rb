@@ -124,4 +124,24 @@ class DefinitionsController < ApplicationController
     end
   end
 
+  def upvote
+    if user_signed_in?
+      definition = Definition.find(params[:id])
+      definition.upvote(current_user)
+      redirect_to :back, params
+    else
+      redirect_to new_user_session_path(params), :alert => t(:'definitions.vote.signin-message')
+    end
+  end
+
+  def downvote
+    if user_signed_in?
+      definition = Definition.find(params[:id])
+      definition.downvote(current_user)
+      redirect_to :back, params
+    else
+      redirect_to new_user_session_path(params), :alert => t(:'definitions.vote.signin-message')
+    end
+  end
+
 end

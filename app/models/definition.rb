@@ -11,6 +11,26 @@ class Definition < ActiveRecord::Base
 
   acts_as_voteable
 
+  def upvote(current_user)
+    if current_user.voted_for?(self)
+      current_user.clear_votes(self)
+      down_score
+    else
+      current_user.vote_exclusively_for(self)
+      up_score
+    end
+  end
+
+  def downvote(current_user)
+    if current_user.voted_for?(self)
+      current_user.clear_votes(self)
+      up_score
+    else
+      current_user.vote_exclusively_against(self)
+      down_score
+    end
+  end
+
   def accept(current_user)
     current_user.vote_exclusively_for(self)
 

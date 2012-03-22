@@ -36,6 +36,9 @@ zh-CN:
       desc: 你好！ 再见！
 
   definitions:
+    vote:
+      signin-message: 
+        请您先登录。
     review:
       desc: 您可以接受吗？
       accept: 接受

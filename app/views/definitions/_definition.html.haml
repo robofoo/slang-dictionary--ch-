@@ -18,11 +18,17 @@
     .span1
       .voting
         .up
-          = image_tag asset_path('vote_up.png'), { :data_def_id => definition.id }
+          - if user_signed_in? && current_user.voted_for?(definition)
+            = link_to image_tag(asset_path 'vote_up_active.png'), upvote_definition_path(definition, params)
+          - else
+            = link_to image_tag(asset_path 'vote_up.png'), upvote_definition_path(definition, params)
         .score
           = definition.plusminus
         .down
-          = image_tag asset_path('vote_down.png'), { :data_def_id => definition.id }
+          - if user_signed_in? && current_user.voted_against?(definition)
+            = link_to image_tag(asset_path 'vote_down_active.png'), downvote_definition_path(definition)
+          -else
+            = link_to image_tag(asset_path 'vote_down.png'), downvote_definition_path(definition)
 -else
   .row.definitions
     .span4
