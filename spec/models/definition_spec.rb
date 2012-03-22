@@ -39,6 +39,44 @@ describe Definition do
       new_def.score.should == old_score - 1
       new_def.votes.count.should == old_vote_count + 1
     end
+
+    it 'clears votes if already voted for' do
+      user = Factory.create(:user)
+      new_def = Factory.create(:definition)
+      old_score = new_def.score
+      old_vote_count = new_def.votes.count
+      new_def.downvote(user)
+      new_def.score.should == old_score - 1
+      new_def.votes.count.should == old_vote_count + 1
+
+      new_def.downvote(user)
+      new_def.score.should == old_score
+      new_def.votes.count.should == old_vote_count
+    end
+  end
+
+  describe "#upvote(user) after a #downvote(user)" do
+    it 'properly updates score' do
+      user = Factory.create(:user)
+      new_def = Factory.create(:definition)
+      new_def.downvote(user)
+      new_def.score.should == -1
+
+      new_def.upvote(user)
+      new_def.score.should == 1
+    end
+  end
+
+  describe "#downvote(user) after a #upvote(user)" do
+    it 'properly updates score' do
+      user = Factory.create(:user)
+      new_def = Factory.create(:definition)
+      new_def.upvote(user)
+      new_def.score.should == 1
+
+      new_def.downvote(user)
+      new_def.score.should == -1
+    end
   end
 
   describe "#pinyin" do

@@ -15,6 +15,9 @@ class Definition < ActiveRecord::Base
     if current_user.voted_for?(self)
       current_user.clear_votes(self)
       down_score
+    elsif current_user.voted_against?(self)
+      current_user.vote_exclusively_for(self)
+      up_score(2)
     else
       current_user.vote_exclusively_for(self)
       up_score
@@ -22,9 +25,12 @@ class Definition < ActiveRecord::Base
   end
 
   def downvote(current_user)
-    if current_user.voted_for?(self)
+    if current_user.voted_against?(self)
       current_user.clear_votes(self)
       up_score
+    elsif current_user.voted_for?(self)
+      current_user.vote_exclusively_against(self)
+      down_score(2)
     else
       current_user.vote_exclusively_against(self)
       down_score
@@ -68,12 +74,12 @@ class Definition < ActiveRecord::Base
 
   private
 
-  def up_score
-    self.score = self.score + 1
+  def up_score(times=1)
+    self.score = self.score + times
   end
 
-  def down_score
-    self.score = self.score - 1
+  def down_score(times=1)
+    self.score = self.score - times
   end
 
   def create_code
