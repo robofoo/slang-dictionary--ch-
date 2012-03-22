@@ -5,6 +5,6 @@
   %span.letters
     - [*'a'..'z'].each do |letter|
       = link_to letter, define_path({ :char => letter }), :class => letter == @char ? "active" : ''
-  %span.letters
-    = link_to '#', define_path( {:char => '#' }), :class => @char == '#' ? "active" : ''
+  -#%span.letters
+    -#= link_to '#', define_path( {:char => '#' }), :class => @char == '#' ? "active" : ''
   %hr
