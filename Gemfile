@@ -11,6 +11,7 @@ gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-boots
 gem 'simple_form', '~> 2.0'
 gem 'thumbs_up', :git => 'git://github.com/brady8/thumbs_up.git'
 gem 'will_paginate', '~> 3.0'
+gem 'thin'
 
 group :production do
   gem 'pg'
@@ -30,5 +31,4 @@ group :test, :development do
   gem 'spork-rails'
   gem 'factory_girl_rails'
   gem 'pry'
-  gem 'thin'
 end
