@@ -18,6 +18,10 @@ class PagesController < ApplicationController
   end
 
   def error
+    if request.referrer && (request.referrer.match(new_user_session_path) || request.referrer.match(new_user_registration_path))
+      params[:error_code] = 2
+    end
+
     @error_message = params[:error_message]
   end
 end

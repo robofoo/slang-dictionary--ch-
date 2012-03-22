@@ -44,6 +44,8 @@ zh-CN:
         <br />
         <br />
         <a href="%{register_path}">免费注册</a>
+      two:
+        去<a href="%{root_path}">主页</a>
 
   definitions:
     vote:

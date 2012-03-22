@@ -1,8 +1,11 @@
--case params[:error_code]
+-case params[:error_code].to_s
 -when "1"
   .well
     %h2= t :'pages.error.title'
     %br
     = raw t(:'pages.error.one', login_path:new_user_session_path, register_path:new_user_registration_path)
+-when "2"
+  .well
+    = raw t(:'pages.error.two', root_path:root_path) 
 -else
   = @error_message
