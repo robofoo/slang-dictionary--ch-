@@ -15,24 +15,6 @@ describe Definition do
     end
   end
 
-  describe "#up_score" do
-    it 'adds score by one' do
-      new_def = Factory.create(:definition)
-      new_def.score.should == 0
-      new_def.up_score
-      new_def.score.should == 1
-    end
-  end
-
-  describe "#down_score" do
-    it 'lowers score by one' do
-      new_def = Factory.create(:definition)
-      new_def.score.should == 0
-      new_def.down_score
-      new_def.score.should == -1
-    end
-  end
-
   describe "create new definition" do
     it 'does not allow invalid status' do
       lambda do
@@ -112,6 +94,8 @@ describe Definition do
         @user2 = Factory.create(:user)
         @user3 = Factory.create(:user)
         @user4 = Factory.create(:user)
+        @user5 = Factory.create(:user)
+        @user6 = Factory.create(:user)
       end
 
       after(:all) do
@@ -128,15 +112,17 @@ describe Definition do
         @def1.score.should == 1
       end
       
-      #it 'downgrade status if score is low enough' do
-        #@def1.reject(@user1)
-        #@def1.reject(@user2)
-        #@def1.reject(@user3)
-        #@def1.status.should == 'raw'
+      it 'downgrade status if score is low enough' do
+        @def1.reject(@user1)
+        @def1.reject(@user2)
+        @def1.reject(@user3)
+        @def1.reject(@user4)
+        @def1.reject(@user5)
+        @def1.status.should == 'raw'
 
-        #@def1.reject(@user4)
-        #@def1.status.should == 'flagged'
-      #end
+        @def1.reject(@user6)
+        @def1.status.should == 'flagged'
+      end
     end
   end
 
