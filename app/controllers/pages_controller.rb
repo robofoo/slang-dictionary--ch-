@@ -16,4 +16,8 @@ class PagesController < ApplicationController
 
   def about
   end
+
+  def error
+    @error_message = params[:error_message]
+  end
 end
