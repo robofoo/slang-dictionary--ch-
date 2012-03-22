@@ -116,7 +116,7 @@ class DefinitionsController < ApplicationController
   def reject
     if user_signed_in?
       definition = Definition.find(params[:id])
-      definitions.reject(current_user)
+      definition.reject(current_user)
       message = t :'definitions.review.reject-message', :word => definition.word
       redirect_to({ :action => 'review' }, :flash => { error:message })
     else
