@@ -4,6 +4,11 @@
   = render :partial => 'definitions/definitions', :object => @definitions, :locals => { :show_votes => true }
   = will_paginate @definitions, :class => 'apple_pagination'
 -else
-  .chinese= params[:word]
-  not defined
+  -if params[:word]
+    %strong= params[:word]
+    not defined
+  -else
+    no words starting with
+    %strong= params[:char]
+    defined
   = link_to "yet", new_definition_path(:word => params[:word])
