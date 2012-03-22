@@ -24,4 +24,7 @@ class PagesController < ApplicationController
 
     @error_message = params[:error_message]
   end
+
+  def pinger
+  end
 end

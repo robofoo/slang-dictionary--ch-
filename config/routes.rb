@@ -25,6 +25,7 @@ UrbanChineseDictionary::Application.routes.draw do
   get 'contact' => 'pages#contact'
   get 'about' => 'pages#about'
   get 'error' => 'pages#error'
+  get 'pinger' => 'pages#pinger'
 
   match 'define' => 'define#show', :as => "define_show", :via => [:get, :post]
 
