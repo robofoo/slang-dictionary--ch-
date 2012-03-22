@@ -130,7 +130,7 @@ class DefinitionsController < ApplicationController
       definition.upvote(current_user)
       redirect_to :back, params
     else
-      redirect_to new_user_session_path(params), :alert => t(:'definitions.vote.signin-message')
+      redirect_to error_path(:error_code => 1)
     end
   end
 
@@ -140,7 +140,7 @@ class DefinitionsController < ApplicationController
       definition.downvote(current_user)
       redirect_to :back, params
     else
-      redirect_to new_user_session_path(params), :alert => t(:'definitions.vote.signin-message')
+      redirect_to error_path(:error_code => 1)
     end
   end
 

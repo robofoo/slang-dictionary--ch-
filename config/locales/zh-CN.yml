@@ -34,6 +34,16 @@ zh-CN:
     about:
       title: 关于我们
       desc: 你好！ 再见！
+    error:
+      title: 对不起有问题
+      one: 
+        请您先登录。
+        <br />
+        <br />
+        <a href="%{login_path}">登录</a>
+        <br />
+        <br />
+        <a href="%{register_path}">免费注册</a>
 
   definitions:
     vote:
