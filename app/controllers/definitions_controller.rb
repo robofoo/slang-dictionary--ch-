@@ -1,4 +1,7 @@
 class DefinitionsController < ApplicationController
+  # for cancan
+  authorize_resource
+
   # GET /definitions
   # GET /definitions.json
   def index
