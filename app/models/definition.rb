@@ -14,7 +14,7 @@ class Definition < ActiveRecord::Base
   def accept(current_user)
     current_user.vote_exclusively_for(self)
 
-    self.up_score
+    up_score
 
     # upgrade status to 'reviewed' if score is high enough
     if self.plusminus > 0
@@ -26,7 +26,7 @@ class Definition < ActiveRecord::Base
   def reject(current_user)
     current_user.vote_exclusively_against(self)
 
-    self.down_score
+    down_score
 
     # downgrade status to 'flagged' if score is low enough
     if self.plusminus < -5
@@ -46,6 +46,8 @@ class Definition < ActiveRecord::Base
     end
   end
 
+  private
+
   def up_score
     self.score = self.score + 1
   end
@@ -53,8 +55,6 @@ class Definition < ActiveRecord::Base
   def down_score
     self.score = self.score - 1
   end
-
-  private
 
   def create_code
     self.code = SecureRandom.hex(6)
