@@ -1,4 +1,4 @@
--if !@definitions.nil? && !@definitions.empty?
+-if @definitions.present?
   = will_paginate @definitions, :class => 'apple_pagination'
   %br
   = render :partial => 'definitions/definitions', :object => @definitions, :locals => { :show_votes => true }
