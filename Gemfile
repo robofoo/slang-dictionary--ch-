@@ -9,7 +9,7 @@ gem 'cancan'
 #gem "twitter-bootstrap-rails", "~> 2.0.1.0"
 gem 'twitter-bootstrap-rails', :git => 'http://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'simple_form', '~> 2.0'
-gem 'thumbs_up', '~> 0.5'
+gem 'thumbs_up', :git => 'git://github.com/brady8/thumbs_up.git'
 gem 'will_paginate', '~> 3.0'
 
 group :production do
