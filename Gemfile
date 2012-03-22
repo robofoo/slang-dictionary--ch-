@@ -12,6 +12,7 @@ gem 'simple_form', '~> 2.0'
 gem 'thumbs_up', :git => 'git://github.com/brady8/thumbs_up.git'
 gem 'will_paginate', '~> 3.0'
 gem 'thin'
+gem 'newrelic_rpm'
 
 group :production do
   gem 'pg'
