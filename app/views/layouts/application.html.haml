@@ -46,10 +46,16 @@
                 %li{ :class => params[:action] == 'new' && params[:controller] == 'devise/sessions' ? 'active' : '' }= link_to t(:'application-layout.sign-in'), new_user_session_path
                 %li{ :class => params[:action] == 'new' && params[:controller] == 'devise/registrations'? 'active' : '' }= link_to t(:'application-layout.join'), new_user_registration_path
               %li.divider-vertical
-              %li{ :class => params[:locale] == 'en' ? '' : 'active' }
-                = link_to "中文", url_for(params.merge( { :locale => 'zh-CN' } ))
-              %li{ :class => params[:locale] == 'en' ? 'active' : '' }
-                = link_to "English", url_for(params.merge( { :locale => 'en' } ))
+              -if params[:action] == 'create'
+                %li{ :class => params[:locale] == 'en' ? '' : 'active' }
+                  = link_to "中文", '#'
+                %li{ :class => params[:locale] == 'en' ? 'active' : '' }
+                  = link_to "English", '#'
+              -else
+                %li{ :class => params[:locale] == 'en' ? '' : 'active' }
+                  = link_to "中文", url_for(params.merge( { :locale => 'zh-CN' } ))
+                %li{ :class => params[:locale] == 'en' ? 'active' : '' }
+                  = link_to "English", url_for(params.merge( { :locale => 'en' } ))
 
 
     .container
