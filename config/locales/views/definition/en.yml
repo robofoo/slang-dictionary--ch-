@@ -1,0 +1,14 @@
+en:
+  definition:
+    title: Definition
+    desc: All our definitions were written by people just like you. Now add your own!
+    sample-title:
+    form:
+      word: Word (in Chinese)
+      pinyin: Pinyin
+      definition: Definition
+      definition-hint: Give some context as it helps make the word easier to understand. Don't name your friend but celebrities are welcome.
+      example: Example
+      email: Email
+      email-hint: We will keep your email secret. But it's required to submit new words.
+      submit-button: Create Definition

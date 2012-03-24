@@ -1,27 +1,27 @@
 .row
   .span5
-    %h2 Definition
+    %h2= t(:'definition.title')
     .well
-      All our definitions were written by people just like you. Now add your own!
+      = t(:'definition.desc')
     = simple_form_for(@definition) do |f|
       = f.error_notification
 
       - @new_word = params[:word]
       .form-inputs
         -if @new_word
-          = f.input :word, :label => 'Word (in Chinese)', :input_html => { :value => @new_word }
+          = f.input :word, :label => t(:'definition.form.word'), :input_html => { :value => @new_word }
         -else
-          = f.input :word, :label => 'Word (in Chinese)'
-        = f.input :pinyin_original, :label => 'pinyin'
-        = f.input :definition, :hint => "Give some context as it helps make the word easier to understand. Don't name your friend but celebrities are welcome."
-        = f.input :example
+          = f.input :word, :label => t(:'definition.form.word')
+        = f.input :pinyin_original, :label => t(:'definition.form.pinyin')
+        = f.input :definition, :label => t(:'definition.form.definition'), :hint => t(:'definition.form.definition-hint')
+        = f.input :example, :label => t(:'definition.form.example')
         -if user_signed_in?
           = f.hidden_field :email, :value => current_user.email
         -else
-          = f.input :email, :hint => "We will keep your email secret. But it's required to submit new words."
+          = f.input :email, :label => t(:'definition.form.email'), :hint => t(:'definition.form.email-hint')
 
       .form-actions
-        = f.button :submit
+        = f.button :submit, :value => t(:'definition.form.submit-button')
   .span1 &nbsp;
   .span6
     %h2 Sample
