@@ -24,4 +24,34 @@
         = f.button :submit, :value => t(:'definition.form.submit-button')
   .span1 &nbsp;
   .span6
-    %h2 Sample
+    .well
+      %h2 Sample
+      %p
+        %table.table.table-bordered
+          %tr
+            %td(style="width:130px")
+              %h3= t :'definition.form.word'
+            %td
+              %h3 三六肉
+          %tr
+            %td
+              %h3= t :'definition.form.pinyin'
+            %td
+              san1 liu4 rou4
+          %tr
+            %td
+              %h3= t :'definition.form.definition'
+            %td
+              狗肉
+          %tr
+            %td
+              %h3= t :'definition.form.example'
+            %td
+              %p
+                A: 别吃三六肉
+              %p
+                B: 为什么？
+              %p
+                A: 这是狗肉！
+              %p
+                B: 天啊！
