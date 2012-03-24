@@ -1,0 +1,16 @@
+zh-CN:
+  activerecord:
+    errors:
+      models:
+        definition:
+          attributes:
+            word:
+              blank: 不能空
+            pinyin_original:
+              blank: 不能空
+            definition:
+              blank: 不能空
+            example:
+              blank: 不能空
+            email:
+              blank: 不能空
