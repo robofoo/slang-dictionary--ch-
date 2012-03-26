@@ -4,3 +4,20 @@
 en:
   global:
     site-name: Chengshi Cidian
+
+  definitions:
+    vote:
+      signin-message: 
+        Please sign in before voting.
+    review:
+      desc: Accept this definition?
+      accept: accept
+      reject: reject
+      do-not-know: I don't know
+      accept-message: You accepted "%{word}"
+      reject-message: You rejected "%{word}"
+      signin-message:
+        Please sign in before accepting/rejecting definitions.
+      nothing-message:
+        Sorry, no definitions to review. You should
+        <a href="%{add_word_url}">add some</a>。
