@@ -5,6 +5,37 @@ en:
   global:
     site-name: Chengshi Cidian
 
+  pages:
+    home:
+      desc:
+        Chengshi Cidian is a dictionary <span class="strong">you create</span>.
+        <i>Define your world</i>
+    contact:
+      title: Contact Us
+      desc: "%{email}"
+    about:
+      title: About Us
+      desc: 
+        <p>
+          ChengshiCidian is an online dictionary for slang words
+          created by people just like you.
+        </p>
+        <p>
+          <a href='%{new_definition_path}'>Start adding</a> new words now!
+        </p>
+    error:
+      title: Sorry, there was a problem
+      one: 
+        Please sign in first
+        <br />
+        <br />
+        <a href="%{login_path}">Sign In</a>
+        <br />
+        <br />
+        <a href="%{register_path}">Sign Up</a>
+      two:
+        Go to <a href="%{root_path}">home</a>
+
   definitions:
     vote:
       signin-message: 
