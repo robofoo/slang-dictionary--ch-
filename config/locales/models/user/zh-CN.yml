@@ -1,0 +1,12 @@
+zh-CN:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              blank: 不能空
+            email:
+              blank: 不能空
+            password:
+              blank: 不能空
