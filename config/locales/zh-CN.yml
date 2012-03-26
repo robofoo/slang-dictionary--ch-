@@ -33,7 +33,13 @@ zh-CN:
       desc: "%{email}"
     about:
       title: 关于我们
-      desc: 你好！ 再见！
+      desc: 
+        <p>
+        你好！
+        </p>
+        <p>
+          <a href='%{new_definition_path}'>Start adding</a> new words now!
+        </p>
     error:
       title: 对不起有问题
       one: 
