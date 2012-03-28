@@ -5,7 +5,7 @@ class DefinitionsController < ApplicationController
   # GET /definitions
   # GET /definitions.json
   def index
-    @definitions = Definition.all
+    @definitions = Definition.order('created_at desc')
 
     respond_to do |format|
       format.html # index.html.erb
