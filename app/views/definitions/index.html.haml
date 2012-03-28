@@ -3,12 +3,13 @@
   %small
     = link_to 'New Definition', new_definition_path
 
-%table.table.table-striped
+%table.table.table-striped.table-condensed.table-bordered
   %tr
     %th Word
     %th Pinyin
     %th Definition
     %th Example
+    %th Status
     %th Email
     %th Date
     %th
@@ -20,6 +21,7 @@
       %td= definition.pinyin_original
       %td= definition.definition
       %td= definition.example
+      %td= definition.status
       %td= definition.email
       %td= definition.created_at.strftime('%a %b %d, %H:%M')
       %td= link_to 'Edit', edit_definition_path(definition)
