@@ -1,23 +1,26 @@
-%h1 Listing definitions
+%h1
+  Listing definitions
+  %small
+    = link_to 'New Definition', new_definition_path
 
-%table
+%table.table.table-striped
   %tr
     %th Word
+    %th Pinyin
     %th Definition
     %th Example
-    %th
+    %th Email
+    %th Date
     %th
     %th
 
   - @definitions.each do |definition|
     %tr
-      %td= definition.word
+      %td= link_to definition.word, definition
+      %td= definition.pinyin_original
       %td= definition.definition
       %td= definition.example
-      %td= link_to 'Show', definition
+      %td= definition.email
+      %td= definition.created_at.strftime('%a %b %d, %H:%M')
       %td= link_to 'Edit', edit_definition_path(definition)
       %td= link_to 'Destroy', definition, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Definition', new_definition_path
