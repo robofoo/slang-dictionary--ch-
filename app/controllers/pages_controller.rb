@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   def home
     random_per_page = 3
     valid_defs = Definition.where(:status => 'reviewed')
-    logger.error "ddddd: " + Definition.where(:status => 'reviewed').to_sql
     def_count = valid_defs.count
 
     if def_count > random_per_page
