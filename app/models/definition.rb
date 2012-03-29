@@ -11,6 +11,26 @@ class Definition < ActiveRecord::Base
 
   acts_as_voteable
 
+  def self.random_subset(valid_defs, size=1)
+    valid_defs_count = valid_defs.count
+    random_ids = []
+    @definitions = []
+
+    if size >= valid_defs_count
+      raise "definition count (#{valid_defs_count}) must be bigger than size (#{size})"
+    end
+
+    begin
+      new_id = rand(valid_defs_count - 1)
+      if random_ids.include?(new_id) == false
+        random_ids << new_id 
+        @definitions << valid_defs.offset(new_id).first
+      end
+    end while random_ids.count < size
+
+    @definitions
+  end
+
   def upvote(current_user)
     if current_user.voted_for?(self)
       current_user.clear_votes(self)

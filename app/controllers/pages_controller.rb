@@ -5,16 +5,7 @@ class PagesController < ApplicationController
     def_count = valid_defs.count
 
     if def_count > random_per_page
-      random_ids = []
-      @definitions = []
-
-      begin
-        new_id = rand(def_count - 1)
-        if random_ids.include?(new_id) == false
-          random_ids << new_id 
-          @definitions << valid_defs.offset(new_id).first
-        end
-      end while random_ids.count < random_per_page
+      @definitions = Definition.random_subset(valid_defs, random_per_page)
     else
       @definitions = valid_defs.all
     end

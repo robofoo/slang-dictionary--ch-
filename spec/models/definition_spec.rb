@@ -1,6 +1,40 @@
 require 'spec_helper'
 
 describe Definition do
+  describe ".random_set" do
+    it 'gets a random set of definitions', r:true do
+      def1 = Factory.create(:definition, :status => 'reviewed')
+      def2 = Factory.create(:definition, :status => 'reviewed')
+      def3 = Factory.create(:definition, :status => 'reviewed')
+      def4 = Factory.create(:definition, :status => 'reviewed')
+      def5 = Factory.create(:definition, :status => 'reviewed')
+      def6 = Factory.create(:definition, :status => 'reviewed')
+      def7 = Factory.create(:definition, :status => 'reviewed')
+      def8 = Factory.create(:definition, :status => 'reviewed')
+      def9 = Factory.create(:definition, :status => 'reviewed')
+
+      subset = Definition.where(:status => 'reviewed')
+      random_set1 = Definition.random_subset(subset, 2)
+      random_set2 = Definition.random_subset(subset, 2)
+
+      random_set1.count.should == 2
+      # if it matches it could just be a fluke
+      random_set1.should_not == random_set2
+    end
+
+    it 'errors if definition count is smaller than size', r:true do
+      expect do
+        def1 = Factory.create(:definition, :status => 'reviewed')
+        def2 = Factory.create(:definition, :status => 'reviewed')
+        def3 = Factory.create(:definition, :status => 'reviewed')
+
+        subset = Definition.where(:status => 'reviewed')
+        random_set = Definition.random_subset(subset, 3)
+        random_set.count.should == 3
+      end.to raise_error
+    end
+  end
+
   describe "#upvote(user)" do
     it 'votes up and updates score' do
       user = Factory.create(:user)
