@@ -20,7 +20,7 @@
       %td= link_to definition.word, definition
       %td= definition.pinyin_original
       %td= definition.definition
-      %td= definition.example
+      %td= simple_format definition.example
       %td= definition.status
       %td= definition.email
       %td= definition.created_at.strftime('%a %b %d, %H:%M')
