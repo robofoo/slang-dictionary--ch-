@@ -5,8 +5,6 @@ class PagesController < ApplicationController
     def_count = valid_defs.count
 
     if def_count > random_per_page
-      logger.debug "AAAAAAA: " + valid_defs.inspect
-      logger.debug "BBBBBBB: " + Definition.random_subset(valid_defs, random_per_page).inspect
       @definitions = Definition.random_subset(valid_defs, random_per_page)
     else
       @definitions = valid_defs.all
