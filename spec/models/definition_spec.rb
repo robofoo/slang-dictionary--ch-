@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Definition do
   describe ".random_set" do
-    it 'gets a random set of definitions', r:true do
+    it 'gets a random set of definitions' do
       def1 = Factory.create(:definition, :status => 'reviewed')
       def2 = Factory.create(:definition, :status => 'reviewed')
       def3 = Factory.create(:definition, :status => 'reviewed')
@@ -22,7 +22,7 @@ describe Definition do
       random_set1.should_not == random_set2
     end
 
-    it 'errors if definition count is smaller than size', r:true do
+    it 'errors if definition count is smaller than size' do
       expect do
         def1 = Factory.create(:definition, :status => 'reviewed')
         def2 = Factory.create(:definition, :status => 'reviewed')
@@ -123,6 +123,11 @@ describe Definition do
   describe "pinyin_for_search field" do
     it 'gets created' do
       new_def = Factory.create(:definition, pinyin_original:'ni3hao3ma5')
+      new_def.pinyin_for_search.should == 'nihaoma'
+    end
+
+    it 'is all lowercase' do
+      new_def = Factory.create(:definition, pinyin_original:'Ni3Hao3Ma5')
       new_def.pinyin_for_search.should == 'nihaoma'
     end
   end

@@ -108,7 +108,7 @@ class Definition < ActiveRecord::Base
 
   def prepare_pinyin_for_search
     # also strip spaces
-    self.pinyin_for_search = self.pinyin_original.gsub(/\d/, '').gsub(' ', '')
+    self.pinyin_for_search = self.pinyin_original.gsub(/\d/, '').gsub(' ', '').downcase
   end
 
   def self.random_unconfirmed(current_user = nil)

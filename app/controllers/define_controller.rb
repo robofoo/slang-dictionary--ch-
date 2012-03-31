@@ -9,7 +9,7 @@ class DefineController < ApplicationController
       definitions = Definition.where('pinyin_for_search between ? and ? or word between ? and ?', @char, @char.next, @char, @char.next).where(:status => 'reviewed')
     # from search
     else
-      word_to_find = params[:word].gsub(' ', '') + "%"
+      word_to_find = params[:word].downcase.gsub(' ', '') + "%"
       definitions = Definition.where('pinyin_for_search like ? or word like ?', word_to_find, word_to_find).where(:status => 'reviewed')
     end
 
