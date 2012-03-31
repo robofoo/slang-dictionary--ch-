@@ -1,13 +1,28 @@
-%p
-  %b Word:
-  = @definition.word
-%p
-  %b Definition:
-  = @definition.definition
-%p
-  %b Example:
-  = @definition.example
+-if @definition.present?
+  = render :partial => 'definitions/definitions', :object => [@definition], :locals => { :show_votes => true }
+-else
+  -if params[:word]
+    %strong= params[:word]
+    not defined
+  -else
+    no words starting with
+    %strong= params[:char]
+    defined
+  = link_to "yet", new_definition_path(:word => params[:word])
 
-= link_to 'Edit', edit_definition_path(@definition)
-\|
-= link_to 'Back', definitions_path
+%p
+  %b= t :'definition.show.up-votes'
+  = @definition.votes_for
+%p
+  %b= t :'definition.show.down-votes'
+  = @definition.votes_against
+%p
+  %b= t :'definition.show.submitted-by'
+  -username = User.where(:email => @definition.email)
+  -if username.present?
+    = username.first.username
+  -else
+    anonymous
+%p
+  %b= t :'definition.show.submitted-on'
+  = @definition.created_at.strftime('%a %b %d, %H:%M')

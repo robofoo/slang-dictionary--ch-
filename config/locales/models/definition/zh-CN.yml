@@ -14,3 +14,9 @@ zh-CN:
               blank: 不能空
             email:
               blank: 不能空
+  definition:
+    show:
+      up-votes: up votes
+      down-votes: down votes
+      submitted-by: submitted by
+      submitted-on: submitted on
