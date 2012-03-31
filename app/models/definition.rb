@@ -21,7 +21,7 @@ class Definition < ActiveRecord::Base
     end
 
     begin
-      new_id = rand(valid_defs_count - 1)
+      new_id = rand(valid_defs_count)
       if random_ids.include?(new_id) == false
         random_ids << new_id 
         @definitions << valid_defs.offset(new_id).first
