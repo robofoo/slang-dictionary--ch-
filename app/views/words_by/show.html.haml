@@ -1,0 +1,11 @@
+-if @user.present?
+  .well
+    Definitions submitted by
+    %strong= @username
+
+  -if @definitions.present?
+    = render :partial => 'definitions/definitions', :object => @definitions, :locals => { :show_votes => true }
+  -else
+    No words submitted.
+-else
+  Sorry, user '#{@username}' does not exist.

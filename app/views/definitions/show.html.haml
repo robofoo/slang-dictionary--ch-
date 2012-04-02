@@ -20,7 +20,7 @@
   %b= t :'definition.show.submitted-by'
   -username = User.where(:email => @definition.email)
   -if username.present?
-    = username.first.username
+    = link_to username.first.username, words_by_path(username.first.username)
   -else
     anonymous
 %p

@@ -32,6 +32,8 @@ UrbanChineseDictionary::Application.routes.draw do
 
   get 'confirm' => 'definitions#confirm', :as => 'confirm'
 
+  get 'words_by/(:username)' => 'words_by#show', :as => "words_by"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
